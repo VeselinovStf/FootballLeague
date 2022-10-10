@@ -5,6 +5,7 @@ using FootballLeague.Core.Validations;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace FootballLeague.Core.Services
 {
@@ -49,6 +50,20 @@ namespace FootballLeague.Core.Services
             var teamWitMatchesSpecification = new TeamsWithPlayedMatchesSpecification(false);
 
             return await this._teamRepository.ListAsyncBySpec(teamWitMatchesSpecification);
+        }
+
+        public async Task UpdateTeamAsync(int id, string newName)
+        {
+            Guard.ValueLessThenEqual(0, id);
+            Guard.StringIsNullEmptyOrWhiteSpace(newName);
+
+            var currentTeam = await this._teamRepository.GetByIdAsync(id);
+
+            Guard.NotNull(currentTeam);
+
+            currentTeam.Name = newName;
+
+            await this._teamRepository.UpdateAsync(currentTeam);
         }
     }
 }

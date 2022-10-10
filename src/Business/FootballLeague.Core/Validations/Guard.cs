@@ -1,4 +1,6 @@
-﻿using FootballLeague.Core.Exceptions;
+﻿using FootballLeague.Core.Entities;
+using FootballLeague.Core.Exceptions;
+using System;
 
 namespace FootballLeague.Core.Validations
 {
@@ -9,6 +11,14 @@ namespace FootballLeague.Core.Validations
             if (value <= limit)
             {
                 throw new ValidationException($"Value is less than equal to: {limit}");
+            }
+        }
+
+        internal static void NotNull<T>(T obj)
+        {
+            if (obj == null)
+            {
+                throw new ValidationException("Object is null");
             }
         }
 

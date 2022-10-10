@@ -8,6 +8,7 @@ using Moq;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace FootballLeague.CoreTests
 {
@@ -91,7 +92,7 @@ namespace FootballLeague.CoreTests
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 
             teamServiceAsyncRepositoryMock
-                .Setup(m => m.GetByIdAsync(expectedId))
+                .Setup(m => m.GetByIdAsync(It.IsAny<int>()))
                 .ReturnsAsync(expectedTeam);
 
             var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
@@ -112,7 +113,7 @@ namespace FootballLeague.CoreTests
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 
             teamServiceAsyncRepositoryMock
-                .Setup(m => m.GetByIdAsync(expectedId))
+                .Setup(m => m.GetByIdAsync(It.IsAny<int>()))
                 .ReturnsAsync(expectedTeam);
 
             var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
@@ -164,6 +165,81 @@ namespace FootballLeague.CoreTests
             var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
 
             Assert.ThrowsAsync<ValidationException>(async () => await teamService.CreateTeamAsync(name));
+        }
+
+        [Test]
+        public void Throws_ValidationException_When_UpdateTeamAsync_TeamId_Is_Invalid()
+        {
+            var expectedTeam = new Team()
+            {
+                Id = 1,
+                Name = "Team 1"
+            };
+
+            var newName = "Team XXX";
+
+            var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.GetByIdAsync(It.IsAny<int>()))
+                .ReturnsAsync(expectedTeam);
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.UpdateAsync(It.IsAny<Team>()));
+
+            var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
+
+            Assert.ThrowsAsync<ValidationException>(async () => await teamService.UpdateTeamAsync(0, newName));
+        }
+
+        [Test]
+        [TestCase("")]
+        [TestCase(null)]
+        public void Throws_ValidationException_When_UpdateTeamAsync_Name_Is_Invalid(string newName)
+        {
+            var expectedTeam = new Team()
+            {
+                Id = 1,
+                Name = "Team 1"
+            };
+
+            var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.GetByIdAsync(It.IsAny<int>()))
+                .ReturnsAsync(expectedTeam);
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.UpdateAsync(It.IsAny<Team>()));
+
+            var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
+
+            Assert.ThrowsAsync<ValidationException>(async () => await teamService.UpdateTeamAsync(expectedTeam.Id,newName));
+        }
+
+        [Test]     
+        public void Throws_ValidationException_When_UpdateTeamAsync_Team_To_Update_Is_Not_Found()
+        {
+            var expectedTeam = new Team()
+            {
+                Id = 1,
+                Name = "Team 1"
+            };
+
+            var newName = "Team XXX";
+
+            var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.GetByIdAsync(It.IsAny<int>()))
+                .Returns(Task.FromResult<Team>(null));
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.UpdateAsync(It.IsAny<Team>()));
+
+            var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
+
+            Assert.ThrowsAsync<ValidationException>(async () => await teamService.UpdateTeamAsync(expectedTeam.Id, newName));
         }
     }
 }

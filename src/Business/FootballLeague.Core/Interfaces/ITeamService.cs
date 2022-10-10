@@ -8,6 +8,8 @@ namespace FootballLeague.Core.Interfaces
     {
         Task<Team> GetTeamByIdAsync(int expectedId);
         Task<IEnumerable<Team>> GetAllTeamsAsync();
+
+        Task UpdateTeamAsync(int id, string newName);
         Task<IEnumerable<Team>> GetAllTeamsWithStatisticsAsync();
 
         Task<IEnumerable<Team>> GetTeamsWithMatches();
