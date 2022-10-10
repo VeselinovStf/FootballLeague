@@ -16,11 +16,6 @@ namespace FootballLeague.Core.Services
             this._teamRepository = teamRepository;
         }
 
-        public async Task<IEnumerable<Team>> GetAllTeamsAsync()
-        {
-            return await this._teamRepository.ListAllAsync();
-        }
-
         public async Task<IEnumerable<Team>> GetAllTeamsWithStatisticsAsync()
         {
             var teamWitStatisticsSpecification = new TeamsWithStatiscticsSpecification(false);
