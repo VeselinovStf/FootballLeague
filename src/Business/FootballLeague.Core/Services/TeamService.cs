@@ -65,5 +65,16 @@ namespace FootballLeague.Core.Services
 
             await this._teamRepository.UpdateAsync(currentTeam);
         }
+
+        public async Task DeleteTeamAsync(int id)
+        {
+            Guard.ValueLessThenEqual(0, id);
+          
+            var currentTeam = await this._teamRepository.GetByIdAsync(id);
+
+            Guard.NotNull(currentTeam);      
+
+            await this._teamRepository.DeleteAsync(currentTeam);
+        }
     }
 }

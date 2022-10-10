@@ -8,7 +8,6 @@ using Moq;
 using NUnit.Framework;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace FootballLeague.CoreTests
 {
@@ -240,6 +239,52 @@ namespace FootballLeague.CoreTests
             var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
 
             Assert.ThrowsAsync<ValidationException>(async () => await teamService.UpdateTeamAsync(expectedTeam.Id, newName));
+        }
+
+        [Test]
+        public void Throws_ValidationException_When_DeleteTeamAsync_TeamId_Is_Invalid()
+        {
+            var expectedTeam = new Team()
+            {
+                Id = 1,
+                Name = "Team 1"
+            };
+
+            var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.GetByIdAsync(It.IsAny<int>()))
+                .ReturnsAsync(expectedTeam);
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.DeleteAsync(It.IsAny<Team>()));
+
+            var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
+
+            Assert.ThrowsAsync<ValidationException>(async () => await teamService.DeleteTeamAsync(0));
+        }
+
+        [Test]
+        public void Throws_ValidationException_When_DeleteTeamAsync_Team_To_Update_Is_Not_Found()
+        {
+            var expectedTeam = new Team()
+            {
+                Id = 1,
+                Name = "Team 1"
+            };
+
+            var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.GetByIdAsync(It.IsAny<int>()))
+                .Returns(Task.FromResult<Team>(null));
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.DeleteAsync(It.IsAny<Team>()));
+
+            var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
+
+            Assert.ThrowsAsync<ValidationException>(async () => await teamService.DeleteTeamAsync(expectedTeam.Id));
         }
     }
 }
