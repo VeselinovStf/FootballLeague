@@ -80,5 +80,26 @@ namespace FootballLeague.CoreTests
             CollectionAssert.AreEqual(expectedTeams, actualTeamsWithRanking);
         }
 
+
+        [Test]
+        public async Task GetTeamById()
+        {
+            var expectedId = 1;
+            var expectedTeam = TeamStub.GetTeamStub(expectedId);
+
+            var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.GetByIdAsync(expectedId))
+                .ReturnsAsync(expectedTeam);
+
+            var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
+
+            var actualTeam = await teamService.GetTeamByIdAsync(expectedId);
+
+            Assert.NotNull(actualTeam);
+            Assert.That(actualTeam.Id, Is.EqualTo(expectedId));
+            Assert.That(actualTeam.Name, Is.EqualTo(expectedTeam.Name));
+        }
     }
 }

@@ -6,7 +6,7 @@ namespace FootballLeague.Core.Interfaces
 {
     public interface IAsyncRepository<T> where T : BaseEntity
     {
-        Task<T> GetByIdAsync(string id);
+        Task<T> GetByIdAsync(int id);
 
         T GetSingleBySpec(ISpecification<T> spec);
 

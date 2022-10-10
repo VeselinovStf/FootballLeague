@@ -29,6 +29,11 @@ namespace FootballLeague.Core.Services
 
         }
 
+        public async Task<Team> GetTeamByIdAsync(int expectedId)
+        {
+            return await this._teamRepository.GetByIdAsync(expectedId);
+        }
+
         public async Task<IEnumerable<Team>> GetTeamsWithMatches()
         {
             var teamWitMatchesSpecification = new TeamsWithPlayedMatchesSpecification(false);

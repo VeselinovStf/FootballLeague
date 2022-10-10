@@ -7,17 +7,22 @@ namespace FootballLeague.CoreTests.Stubs
 {
     public static class TeamStub
     {
+        public static Team GetTeamStub(int id)
+        {
+            return new Team()
+            {
+                Id = id,
+                Name = $"Team {id}",
+
+            };
+        }
+
         public static List<Team> GetTeamsStub()
         {
             var teams = new List<Team>();
             for (int i = 1; i < 5; i++)
             {
-                teams.Add(new Team()
-                {
-                    Id = i,
-                    Name = $"Team {i}",
-
-                });
+                teams.Add(GetTeamStub(i));
             }
             
             return teams;
