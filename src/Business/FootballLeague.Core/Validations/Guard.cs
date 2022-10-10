@@ -1,6 +1,4 @@
-﻿using FootballLeague.Core.Entities;
-using FootballLeague.Core.Exceptions;
-using System;
+﻿using FootballLeague.Core.Exceptions;
 
 namespace FootballLeague.Core.Validations
 {

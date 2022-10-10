@@ -1,7 +1,5 @@
 ﻿using FootballLeague.Core.Entities;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace FootballLeague.CoreTests.Stubs
 {
@@ -24,7 +22,7 @@ namespace FootballLeague.CoreTests.Stubs
             {
                 teams.Add(GetTeamStub(i));
             }
-            
+
             return teams;
         }
 
@@ -60,7 +58,7 @@ namespace FootballLeague.CoreTests.Stubs
             var team1 = new Team()
             {
                 Id = 1,
-                Name = "Team 1",           
+                Name = "Team 1",
             };
 
             var team2 = new Team()

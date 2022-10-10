@@ -2,10 +2,8 @@
 using FootballLeague.Core.Interfaces;
 using FootballLeague.Core.Specifications;
 using FootballLeague.Core.Validations;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace FootballLeague.Core.Services
 {
@@ -21,6 +19,8 @@ namespace FootballLeague.Core.Services
         public async Task<Team> CreateTeamAsync(string name)
         {
             Guard.StringIsNullEmptyOrWhiteSpace(name);
+
+            // TODO: same name validation
 
             return await this._teamRepository.AddAsync(new Team() { Name = name });
         }
@@ -69,10 +69,10 @@ namespace FootballLeague.Core.Services
         public async Task DeleteTeamAsync(int id)
         {
             Guard.ValueLessThenEqual(0, id);
-          
+
             var currentTeam = await this._teamRepository.GetByIdAsync(id);
 
-            Guard.NotNull(currentTeam);      
+            Guard.NotNull(currentTeam);
 
             await this._teamRepository.DeleteAsync(currentTeam);
         }

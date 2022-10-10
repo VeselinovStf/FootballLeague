@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 namespace FootballLeague.CoreTests
 {
     public class TeamService_Should
-    {     
+    {
         [Test]
         public async Task GetAllTeamsRankingAsync()
         {
@@ -213,10 +213,10 @@ namespace FootballLeague.CoreTests
 
             var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
 
-            Assert.ThrowsAsync<ValidationException>(async () => await teamService.UpdateTeamAsync(expectedTeam.Id,newName));
+            Assert.ThrowsAsync<ValidationException>(async () => await teamService.UpdateTeamAsync(expectedTeam.Id, newName));
         }
 
-        [Test]     
+        [Test]
         public void Throws_ValidationException_When_UpdateTeamAsync_Team_To_Update_Is_Not_Found()
         {
             var expectedTeam = new Team()
