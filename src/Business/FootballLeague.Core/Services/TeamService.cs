@@ -16,22 +16,24 @@ namespace FootballLeague.Core.Services
             this._teamRepository = teamRepository;
         }
 
+        public async Task<IEnumerable<Team>> GetAllTeamsAsync()
+        {
+            return await this._teamRepository.ListAllAsync();
+        }
+
         public async Task<IEnumerable<Team>> GetAllTeamsWithStatisticsAsync()
         {
             var teamWitStatisticsSpecification = new TeamsWithStatiscticsSpecification(false);
 
-            var repoEntities = this._teamRepository.GetAllBySpec(teamWitStatisticsSpecification);
+            return await this._teamRepository.ListAsyncBySpec(teamWitStatisticsSpecification);
 
-            return await Task.FromResult(repoEntities);
         }
 
         public async Task<IEnumerable<Team>> GetTeamsWithMatches()
         {
             var teamWitMatchesSpecification = new TeamsWithPlayedMatchesSpecification(false);
 
-            var repoEntities = this._teamRepository.GetAllBySpec(teamWitMatchesSpecification);
-
-            return await Task.FromResult(repoEntities);
+            return await this._teamRepository.ListAsyncBySpec(teamWitMatchesSpecification);
         }
     }
 }

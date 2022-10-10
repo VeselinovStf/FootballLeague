@@ -10,11 +10,9 @@ namespace FootballLeague.Core.Interfaces
 
         T GetSingleBySpec(ISpecification<T> spec);
 
-        IEnumerable<T> GetAllBySpec(ISpecification<T> spec);
-
         Task<IReadOnlyList<T>> ListAllAsync();
 
-        Task<IReadOnlyList<T>> ListAsync(ISpecification<T> spec);
+        Task<IReadOnlyList<T>> ListAsyncBySpec(ISpecification<T> spec);
 
         Task<T> AddAsync(T entity);
 

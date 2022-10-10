@@ -7,6 +7,22 @@ namespace FootballLeague.CoreTests.Stubs
 {
     public static class TeamStub
     {
+        public static List<Team> GetTeamsStub()
+        {
+            var teams = new List<Team>();
+            for (int i = 1; i < 5; i++)
+            {
+                teams.Add(new Team()
+                {
+                    Id = i,
+                    Name = $"Team {i}",
+
+                });
+            }
+            
+            return teams;
+        }
+
         public static List<Team> GetTeamsWithStatisticsStub()
         {
             return new List<Team>()

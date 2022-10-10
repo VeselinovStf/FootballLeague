@@ -20,8 +20,8 @@ namespace FootballLeague.CoreTests
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 
             teamServiceAsyncRepositoryMock
-                .Setup(m => m.GetAllBySpec(It.IsAny<TeamsWithStatiscticsSpecification>()))
-                .Returns(expectedTeamsWithRanking);
+                .Setup(m => m.ListAsyncBySpec(It.IsAny<TeamsWithStatiscticsSpecification>()))
+                .ReturnsAsync(expectedTeamsWithRanking);
 
             var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
 
@@ -39,8 +39,8 @@ namespace FootballLeague.CoreTests
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 
             teamServiceAsyncRepositoryMock
-                .Setup(m => m.GetAllBySpec(It.IsAny<TeamsWithPlayedMatchesSpecification>()))
-                .Returns(expectedTeamsWithMatches);
+                .Setup(m => m.ListAsyncBySpec(It.IsAny<TeamsWithPlayedMatchesSpecification>()))
+                .ReturnsAsync(expectedTeamsWithMatches);
 
             var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
 
@@ -60,5 +60,6 @@ namespace FootballLeague.CoreTests
                 CollectionAssert.AreEqual(expectedTeam.AwayMatches, actualTeam.AwayMatches);
             }
         }
+
     }
 }
