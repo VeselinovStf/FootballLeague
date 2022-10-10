@@ -6,6 +6,7 @@ namespace FootballLeague.Core.Interfaces
 {
     public interface IAsyncRepository<T> where T : BaseEntity
     {
+        // TODO: IDeletable IsDeleted is not looked through all methods!
         Task<T> GetByIdAsync(int id);
 
         T GetSingleBySpec(ISpecification<T> spec);
