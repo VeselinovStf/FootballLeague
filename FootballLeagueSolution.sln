@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{7215DAF1-9D1A-4791-9056-92E9BF9D711C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{4CDEDE57-E256-421F-925D-A86D8F2B24B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{B965327E-356B-4048-8753-238C0B6A1D8D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Business", "Business", "{3A36F113-8148-4D36-89FA-1AF120004863}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{F6EFBC49-AAD2-4F79-BEF8-35441DB7D890}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EC7AAE44-B9BA-46FB-AAA2-D36E0EA0A9BE}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{4CDEDE57-E256-421F-925D-A86D8F2B24B6} = {7215DAF1-9D1A-4791-9056-92E9BF9D711C}
+		{B965327E-356B-4048-8753-238C0B6A1D8D} = {7215DAF1-9D1A-4791-9056-92E9BF9D711C}
+		{3A36F113-8148-4D36-89FA-1AF120004863} = {7215DAF1-9D1A-4791-9056-92E9BF9D711C}
+		{F6EFBC49-AAD2-4F79-BEF8-35441DB7D890} = {7215DAF1-9D1A-4791-9056-92E9BF9D711C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B408A8BC-23B9-4E54-A3D3-CD78749AB636}
+	EndGlobalSection
+EndGlobal
