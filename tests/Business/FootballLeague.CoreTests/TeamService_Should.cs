@@ -1,4 +1,5 @@
 ﻿using FootballLeague.Core.Entities;
+using FootballLeague.Core.Exceptions;
 using FootballLeague.Core.Interfaces;
 using FootballLeague.Core.Services;
 using FootballLeague.Core.Specifications;
@@ -100,6 +101,23 @@ namespace FootballLeague.CoreTests
             Assert.NotNull(actualTeam);
             Assert.That(actualTeam.Id, Is.EqualTo(expectedId));
             Assert.That(actualTeam.Name, Is.EqualTo(expectedTeam.Name));
+        }
+
+        [Test]
+        public void Throws_ArgumentException_When_GetTeamByIdAsync_Team_Id_Is_Zero()
+        {
+            var expectedId = 0;
+            var expectedTeam = TeamStub.GetTeamStub(expectedId);
+
+            var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.GetByIdAsync(expectedId))
+                .ReturnsAsync(expectedTeam);
+
+            var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
+
+            Assert.ThrowsAsync<ValidationException>(async () => await teamService.GetTeamByIdAsync(expectedId));
         }
     }
 }

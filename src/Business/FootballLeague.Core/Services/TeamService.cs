@@ -1,6 +1,7 @@
 ﻿using FootballLeague.Core.Entities;
 using FootballLeague.Core.Interfaces;
 using FootballLeague.Core.Specifications;
+using FootballLeague.Core.Validations;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -31,6 +32,8 @@ namespace FootballLeague.Core.Services
 
         public async Task<Team> GetTeamByIdAsync(int expectedId)
         {
+            Guard.ValueLessThenEqual(0, expectedId);
+
             return await this._teamRepository.GetByIdAsync(expectedId);
         }
 
