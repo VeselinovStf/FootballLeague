@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FootballLeague.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,7 +15,7 @@ namespace FootballLeague.CoreTests.Stubs
                 {
                     Id = 1,
                     Name = "Team 1",
-                    Statistics = new Statistic()
+                    Statistic = new Statistic()
                     {
                         Id = 1,
                         TotalScore = 5
@@ -24,7 +25,7 @@ namespace FootballLeague.CoreTests.Stubs
                 {
                     Id = 2,
                     Name = "Team 2",
-                    Statistics = new Statistic()
+                    Statistic = new Statistic()
                     {
                         Id = 2,
                         TotalScore = 78
