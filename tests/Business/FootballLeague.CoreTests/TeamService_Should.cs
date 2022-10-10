@@ -13,7 +13,7 @@ namespace FootballLeague.CoreTests
     public class TeamService_Should
     {     
         [Test]
-        public async Task GetAllTeamsRanking()
+        public async Task GetAllTeamsRankingAsync()
         {
             var expectedTeamsWithRanking = TeamStub.GetTeamsWithStatisticsStub();
 
@@ -32,7 +32,7 @@ namespace FootballLeague.CoreTests
         }
 
         [Test]
-        public async Task GetAllTeamsPlayedMatches()
+        public async Task GetAllTeamsPlayedMatchesAsync()
         {
             var expectedTeamsWithMatches = TeamStub.GetTeamsWithMatchesStub();
 
@@ -62,7 +62,7 @@ namespace FootballLeague.CoreTests
         }
 
         [Test]
-        public async Task GetAllTeams()
+        public async Task GetAllTeamsAsync()
         {
             var expectedTeams = TeamStub.GetTeamsStub();
 
@@ -74,15 +74,15 @@ namespace FootballLeague.CoreTests
 
             var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
 
-            var actualTeamsWithRanking = await teamService.GetAllTeamsAsync();
+            var actualTeams = await teamService.GetAllTeamsAsync();
 
-            Assert.NotNull(actualTeamsWithRanking);
-            CollectionAssert.AreEqual(expectedTeams, actualTeamsWithRanking);
+            Assert.NotNull(actualTeams);
+            CollectionAssert.AreEqual(expectedTeams, actualTeams);
         }
 
 
         [Test]
-        public async Task GetTeamById()
+        public async Task GetTeamByIdAsync()
         {
             var expectedId = 1;
             var expectedTeam = TeamStub.GetTeamStub(expectedId);
