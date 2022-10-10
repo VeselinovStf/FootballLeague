@@ -61,5 +61,24 @@ namespace FootballLeague.CoreTests
             }
         }
 
+        [Test]
+        public async Task GetAllTeams()
+        {
+            var expectedTeams = TeamStub.GetTeamsStub();
+
+            var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.ListAllAsync())
+                .ReturnsAsync(expectedTeams);
+
+            var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
+
+            var actualTeamsWithRanking = await teamService.GetAllTeamsAsync();
+
+            Assert.NotNull(actualTeamsWithRanking);
+            CollectionAssert.AreEqual(expectedTeams, actualTeamsWithRanking);
+        }
+
     }
 }
