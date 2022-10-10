@@ -5,6 +5,7 @@ using FootballLeague.Core.Specifications;
 using FootballLeague.CoreTests.Stubs;
 using Moq;
 using NUnit.Framework;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace FootballLeague.CoreTests
@@ -28,6 +29,36 @@ namespace FootballLeague.CoreTests
 
             Assert.NotNull(actualTeamsWithRanking);
             CollectionAssert.AreEqual(expectedTeamsWithRanking, actualTeamsWithRanking);
+        }
+
+        [Test]
+        public async Task GetAllTeamsPlayedMatches()
+        {
+            var expectedTeamsWithMatches = TeamStub.GetTeamsWithMatchesStub();
+
+            var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.GetAllBySpec(It.IsAny<TeamsWithPlayedMatchesSpecification>()))
+                .Returns(expectedTeamsWithMatches);
+
+            var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
+
+            var actualTeamsWithMatches = await teamService
+                .GetTeamsWithMatches();
+
+            Assert.NotNull(actualTeamsWithMatches);
+            CollectionAssert.AreEqual(expectedTeamsWithMatches, actualTeamsWithMatches);
+
+            var actualTeamsWithMatchesList = actualTeamsWithMatches.ToList();
+            for (int i = 0; i < expectedTeamsWithMatches.Count; i++)
+            {
+                var expectedTeam = expectedTeamsWithMatches[i];
+                var actualTeam = actualTeamsWithMatchesList[i];
+
+                CollectionAssert.AreEqual(expectedTeam.HomeMatches, actualTeam.HomeMatches);
+                CollectionAssert.AreEqual(expectedTeam.AwayMatches, actualTeam.AwayMatches);
+            }
         }
     }
 }

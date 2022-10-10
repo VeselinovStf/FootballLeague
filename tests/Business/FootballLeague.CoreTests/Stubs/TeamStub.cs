@@ -33,5 +33,45 @@ namespace FootballLeague.CoreTests.Stubs
                 }
             };
         }
+
+        public static List<Team> GetTeamsWithMatchesStub()
+        {
+            var team1 = new Team()
+            {
+                Id = 1,
+                Name = "Team 1",           
+            };
+
+            var team2 = new Team()
+            {
+                Id = 2,
+                Name = "Team 2",
+            };
+
+            var match1 = new Match()
+            {
+                Id = 1,
+                HomeTeam = team1,
+                HomeTeamId = team1.Id,
+                AwayTeam = team2,
+                AwayTeamId = team2.Id
+            };
+
+            var match2 = new Match()
+            {
+                Id = 2,
+                HomeTeam = team2,
+                HomeTeamId = team2.Id,
+                AwayTeam = team1,
+                AwayTeamId = team1.Id
+            };
+
+            team1.HomeMatches.Add(match1);
+            team2.AwayMatches.Add(match2);
+            team2.HomeMatches.Add(match2);
+            team1.AwayMatches.Add(match2);
+
+            return new List<Team> { team1, team2 };
+        }
     }
 }
