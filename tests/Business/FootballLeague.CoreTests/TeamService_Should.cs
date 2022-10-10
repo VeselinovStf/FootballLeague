@@ -119,5 +119,51 @@ namespace FootballLeague.CoreTests
 
             Assert.ThrowsAsync<ValidationException>(async () => await teamService.GetTeamByIdAsync(expectedId));
         }
+
+        [Test]
+        public async Task CreateTeamAsync_When_Valid_ParamersAre_Passed()
+        {
+            var expectedTeam = new Team()
+            {
+                Id = 1,
+                Name = "Team 1"
+            };
+
+            var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.AddAsync(It.IsAny<Team>()))
+                .ReturnsAsync(expectedTeam);
+
+            var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
+
+            var actualTeam = await teamService.CreateTeamAsync(expectedTeam.Name);
+
+            Assert.NotNull(actualTeam);
+            Assert.That(actualTeam.Id, Is.EqualTo(expectedTeam.Id));
+            Assert.That(actualTeam.Name, Is.EqualTo(expectedTeam.Name));
+        }
+
+        [Test]
+        [TestCase("")]
+        [TestCase(null)]
+        public void Throws_ValidationException_When_CreateTeamAsync_Is_Called_With_Invalid_Parameter(string name)
+        {
+            var expectedTeam = new Team()
+            {
+                Id = 1,
+                Name = "Team 1"
+            };
+
+            var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
+
+            teamServiceAsyncRepositoryMock
+                .Setup(m => m.AddAsync(It.IsAny<Team>()))
+                .ReturnsAsync(expectedTeam);
+
+            var teamService = new TeamService(teamServiceAsyncRepositoryMock.Object);
+
+            Assert.ThrowsAsync<ValidationException>(async () => await teamService.CreateTeamAsync(name));
+        }
     }
 }

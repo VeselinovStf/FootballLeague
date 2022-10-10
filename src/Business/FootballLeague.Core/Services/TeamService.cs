@@ -17,6 +17,13 @@ namespace FootballLeague.Core.Services
             this._teamRepository = teamRepository;
         }
 
+        public async Task<Team> CreateTeamAsync(string name)
+        {
+            Guard.StringIsNullEmptyOrWhiteSpace(name);
+
+            return await this._teamRepository.AddAsync(new Team() { Name = name });
+        }
+
         public async Task<IEnumerable<Team>> GetAllTeamsAsync()
         {
             return await this._teamRepository.ListAllAsync();
