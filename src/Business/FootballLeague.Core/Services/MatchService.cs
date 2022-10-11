@@ -29,13 +29,8 @@ namespace FootballLeague.Core.Services
             Guard.ValueLessThenEqual(0, homeTeamId);
             Guard.ValueLessThenEqual(0, awayTeamId);
 
-            var homeTeamCall = this._teamRepository.GetByIdAsync(homeTeamId);
-            var awayTeamCall = this._teamRepository.GetByIdAsync(awayTeamId);
-
-            await Task.WhenAll(new Task[] { homeTeamCall, awayTeamCall });
-
-            var homeTeam = homeTeamCall.Result;
-            var awayTeam = awayTeamCall.Result;
+            var homeTeam = await this._teamRepository.GetByIdAsync(homeTeamId);
+            var awayTeam = await this._teamRepository.GetByIdAsync(awayTeamId);
 
             // Validate Teams - are they existing?
             Guard.NotNull(homeTeam);
