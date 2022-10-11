@@ -12,16 +12,18 @@ namespace FootballLeague.Core.Entities
         {
 
         }
-        public Match(int homeTeamId, int awayTeamId, DateTime date, MatchResult result)
+        public Match(int homeTeamId, int awayTeamId, DateTime date, int homeTeamScore, int awayTeamScore)
         {
             Guard.ValueLessThenEqual(0, homeTeamId);
             Guard.ValueLessThenEqual(0, awayTeamId);
-            Guard.NotNull(result);
+            Guard.ValueLessThenEqual(-1, homeTeamScore);
+            Guard.ValueLessThenEqual(-1, awayTeamScore);
 
             HomeTeamId = homeTeamId;
             AwayTeamId = awayTeamId;
             Date = date;
-            Result = result;
+            HomeTeamScore = homeTeamScore;
+            AwayTeamScore = awayTeamScore;
         }
 
         public int HomeTeamId { get;private set; }
@@ -32,15 +34,16 @@ namespace FootballLeague.Core.Entities
 
         public DateTime Date { get; private set; }
 
-        public MatchResult Result { get; private set; }
+        public int HomeTeamScore { get; private set; }
+        public int AwayTeamScore { get; private set; }
 
         public void UpdateMatchResult(int homeTeamScore, int awayTeamScore)
         {
             Guard.ValueLessThenEqual(-1, homeTeamScore);
             Guard.ValueLessThenEqual(-1, awayTeamScore);
 
-            this.Result.HomeTeamScore = homeTeamScore;
-            this.Result.AwayTeamScore = awayTeamScore;
+            this.HomeTeamScore = homeTeamScore;
+            this.AwayTeamScore = awayTeamScore;
         }
 
         public void UpdateMatchDate(DateTime newDate)

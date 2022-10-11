@@ -29,8 +29,8 @@ namespace FootballLeague.API.Features.Handlers.Match.Commands
             {
                 AwayTeamId = createdMatch.AwayTeamId,
                 HomeTeamId = createdMatch.HomeTeamId,
-                AwayTeamScore = createdMatch.Result.AwayTeamScore,
-                HomeTeamScore = createdMatch.Result.HomeTeamScore,
+                AwayTeamScore = createdMatch.AwayTeamScore,
+                HomeTeamScore = createdMatch.HomeTeamScore,
                 MatchDate = createdMatch.Date
             });
         }

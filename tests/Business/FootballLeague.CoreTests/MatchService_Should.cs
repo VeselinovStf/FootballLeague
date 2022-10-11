@@ -1,5 +1,4 @@
-﻿using FootballLeague.Core.Entities;
-using FootballLeague.Core.Interfaces;
+﻿using FootballLeague.Core.Interfaces;
 using FootballLeague.Core.Services;
 using FootballLeague.CoreTests.Builders;
 using Moq;
@@ -19,13 +18,7 @@ namespace FootballLeague.CoreTests
             var awayTeam = TeamBuilder.GetTeam(2);
 
             var matchDate = DateTime.Now;
-            var expectedMatch = new Core.Entities.Match(homeTeam.Id, awayTeam.Id,matchDate, new MatchResult()
-            {
-                Id = 1,
-                HomeTeamScore = 2,
-                AwayTeamScore = 1,
-                MatchId = 1
-            })
+            var expectedMatch = new Core.Entities.Match(homeTeam.Id, awayTeam.Id,matchDate,2,1)
             { Id = 1 };
 
             var matchServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Core.Entities.Match>>();
@@ -49,16 +42,15 @@ namespace FootballLeague.CoreTests
                 homeTeam.Id,
                 awayTeam.Id, 
                 matchDate,
-                expectedMatch.Result.HomeTeamScore, 
-                expectedMatch.Result.AwayTeamScore);
+                expectedMatch.HomeTeamScore, 
+                expectedMatch.AwayTeamScore);
 
             Assert.NotNull(actialMatch);
             Assert.That(actialMatch.HomeTeamId, Is.EqualTo(expectedMatch.HomeTeamId));
             Assert.That(actialMatch.AwayTeamId, Is.EqualTo(expectedMatch.AwayTeamId));
             Assert.That(actialMatch.Date, Is.EqualTo(matchDate));
-            Assert.NotNull(actialMatch.Result);
-            Assert.That(actialMatch.Result.HomeTeamScore, Is.EqualTo(expectedMatch.Result.HomeTeamScore));
-            Assert.That(actialMatch.Result.AwayTeamScore, Is.EqualTo(expectedMatch.Result.AwayTeamScore));
+            Assert.That(actialMatch.HomeTeamScore, Is.EqualTo(expectedMatch.HomeTeamScore));
+            Assert.That(actialMatch.AwayTeamScore, Is.EqualTo(expectedMatch.AwayTeamScore));
         }
 
         // TODO: Update Match test

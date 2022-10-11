@@ -20,10 +20,10 @@ namespace FootballLeague.Core.Services
         }
 
         public async Task<Match> CreateMatchAsync(
-            int homeTeamId, 
-            int awayTeamId, 
-            DateTime matchDate, 
-            int homeTeamScore, 
+            int homeTeamId,
+            int awayTeamId,
+            DateTime matchDate,
+            int homeTeamScore,
             int awayTeamScore)
         {
             Guard.ValueLessThenEqual(0, homeTeamId);
@@ -36,11 +36,13 @@ namespace FootballLeague.Core.Services
             Guard.NotNull(homeTeam);
             Guard.NotNull(awayTeam);
 
-            var newMatch = new Match(homeTeamId, awayTeamId, matchDate, new MatchResult()
-            {
-                HomeTeamScore = homeTeamScore,
-                AwayTeamScore = awayTeamScore
-            });
+            var newMatch = new Match(
+                homeTeamId, 
+                awayTeamId, 
+                matchDate,
+                homeTeamScore,
+                awayTeamScore
+            );
 
             return await this._matchRepository.AddAsync(newMatch);
         }

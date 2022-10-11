@@ -13,8 +13,7 @@ namespace FootballLeague.Data
         public DbSet<Team> Teams { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<Statistic> Statistics { get; set; }
-        public DbSet<MatchResult> MatchResult { get; set; }
-
+      
         public FootballLeagueDbContext(DbContextOptions<FootballLeagueDbContext> options) : base(options)
         {
         }

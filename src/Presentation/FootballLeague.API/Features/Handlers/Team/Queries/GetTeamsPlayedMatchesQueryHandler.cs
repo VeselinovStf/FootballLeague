@@ -31,13 +31,13 @@ namespace FootballLeague.API.Features.Handlers.Team.Queries
                     {
                         TeamId = h.Id,
                         TeamName = h.HomeTeam.Name,
-                        Result = h.Result.HomeTeamScore,
+                        Result = h.HomeTeamScore,
                     })),
                     AwayMatches = new List<TeamPlayedMatchResponseModel>(t.AwayMatches.Select(a => new TeamPlayedMatchResponseModel()
                     {
                         TeamId = a.Id,
                         TeamName = a.AwayTeam.Name,
-                        Result = a.Result.AwayTeamScore
+                        Result = a.AwayTeamScore
                     }))
                 })));
         }
