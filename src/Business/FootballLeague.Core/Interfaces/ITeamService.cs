@@ -6,6 +6,7 @@ namespace FootballLeague.Core.Interfaces
 {
     public interface ITeamService
     {
+        Task<Team> CreateTeamAsync(string name);
         Task<Team> GetTeamByIdAsync(int expectedId);
         Task<IEnumerable<Team>> GetAllTeamsAsync();
 
