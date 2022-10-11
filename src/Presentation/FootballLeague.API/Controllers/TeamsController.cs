@@ -54,6 +54,19 @@ namespace FootballLeague.API.Controllers
             return Ok(await this._mediator.Send(request));
         }
 
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UpdateTeamResponseModel))]
+        public async Task<IActionResult> CreateTeam(UpdateTeamRequest request)
+        {
+            return Ok(await this._mediator.Send(request));
+        }
+
+        [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(DeleteTeamResponseModel))]
+        public async Task<IActionResult> DeleteTeam(DeleteTeamRequest request)
+        {
+            return Ok(await this._mediator.Send(request));
+        }
 
     }
 }
