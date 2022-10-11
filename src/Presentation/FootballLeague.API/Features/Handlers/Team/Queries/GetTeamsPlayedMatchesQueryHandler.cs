@@ -29,15 +29,23 @@ namespace FootballLeague.API.Features.Handlers.Team.Queries
                     TeamName = t.Name,
                     HomeMatches = new List<TeamPlayedMatchResponseModel>(t.HomeMatches.Select(h => new TeamPlayedMatchResponseModel()
                     {
-                        TeamId = h.Id,
-                        TeamName = h.HomeTeam.Name,
-                        Result = h.HomeTeamScore,
+                        TeamId = h.AwayTeamId,
+                        TeamName = h.AwayTeam.Name,
+                        MatchResult = new MatchResultResponseModel()
+                        {
+                            HomeTeamResult = h.HomeTeamScore,
+                            AwayTeamResult = h.AwayTeamScore
+                        }
                     })),
                     AwayMatches = new List<TeamPlayedMatchResponseModel>(t.AwayMatches.Select(a => new TeamPlayedMatchResponseModel()
                     {
-                        TeamId = a.Id,
-                        TeamName = a.AwayTeam.Name,
-                        Result = a.AwayTeamScore
+                        TeamId = a.HomeTeamId,
+                        TeamName = a.HomeTeam.Name,
+                        MatchResult = new MatchResultResponseModel()
+                        {
+                            HomeTeamResult = a.HomeTeamScore,
+                            AwayTeamResult = a.AwayTeamScore
+                        }
                     }))
                 })));
         }

@@ -6,6 +6,6 @@
 
         public string TeamName { get; set; }
 
-        public int Result { get; set; }
+        public MatchResultResponseModel MatchResult { get; set; }
     }
 }
