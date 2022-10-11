@@ -1,4 +1,5 @@
 ﻿using FootballLeague.Core.Entities;
+using System;
 using System.Collections.Generic;
 
 namespace FootballLeague.CoreTests.Builders
@@ -43,25 +44,11 @@ namespace FootballLeague.CoreTests.Builders
         {
             var team1 = new Team("Team 1", new Statistic()) { Id = 1 };
             var team2 = new Team("Team 1", new Statistic()) { Id = 2 };
+            var matchDate = DateTime.Now;
 
-            var match1 = new Match()
-            {
-                Id = 1,
-                HomeTeam = team1,
-                HomeTeamId = team1.Id,
-                AwayTeam = team2,
-                AwayTeamId = team2.Id
-            };
-
-            var match2 = new Match()
-            {
-                Id = 2,
-                HomeTeam = team2,
-                HomeTeamId = team2.Id,
-                AwayTeam = team1,
-                AwayTeamId = team1.Id
-            };
-
+            var match1 = new Match(team1.Id, team2.Id, matchDate, new MatchResult());
+            var match2 = new Match(team2.Id, team1.Id, matchDate, new MatchResult());
+            
             team1.AddNewMatch(match1, match2);
 
             return new List<Team> { team1, team2 };

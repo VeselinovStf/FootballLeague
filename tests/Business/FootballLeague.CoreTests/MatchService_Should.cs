@@ -19,20 +19,14 @@ namespace FootballLeague.CoreTests
             var awayTeam = TeamBuilder.GetTeam(2);
 
             var matchDate = DateTime.Now;
-            var expectedMatch = new Core.Entities.Match()
+            var expectedMatch = new Core.Entities.Match(homeTeam.Id, awayTeam.Id,matchDate, new MatchResult()
             {
                 Id = 1,
-                HomeTeamId = homeTeam.Id,
-                AwayTeamId = awayTeam.Id,
-                Date = matchDate,
-                Result = new MatchResult()
-                {
-                    Id = 1,
-                    HomeTeamScore = 2,
-                    AwayTeamScore = 1,
-                    MatchId = 1
-                }
-            };
+                HomeTeamScore = 2,
+                AwayTeamScore = 1,
+                MatchId = 1
+            })
+            { Id = 1 };
 
             var matchServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Core.Entities.Match>>();
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Core.Entities.Team>>();

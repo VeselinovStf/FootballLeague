@@ -41,17 +41,11 @@ namespace FootballLeague.Core.Services
             Guard.NotNull(homeTeam);
             Guard.NotNull(awayTeam);
 
-            var newMatch = new Match()
+            var newMatch = new Match(homeTeamId, awayTeamId, matchDate, new MatchResult()
             {
-                HomeTeamId = homeTeamId,
-                AwayTeamId = awayTeamId,
-                Date = matchDate,
-                Result = new MatchResult()
-                {
-                    HomeTeamScore = homeTeamScore,
-                    AwayTeamScore = awayTeamScore
-                }
-            };
+                HomeTeamScore = homeTeamScore,
+                AwayTeamScore = awayTeamScore
+            });
 
             return await this._matchRepository.AddAsync(newMatch);
         }
