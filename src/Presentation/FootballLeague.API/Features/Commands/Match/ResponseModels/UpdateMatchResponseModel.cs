@@ -8,7 +8,7 @@ namespace FootballLeague.API.Features.Commands.Match.ResponseModels
         {
         }
 
-        public UpdateMatchResponseModel(bool isSuccess, string message, MathQueryResponseModel data) : base(isSuccess, message, data)
+        public UpdateMatchResponseModel(bool isSuccess, string message, MatchCommandResponseModel data) : base(isSuccess, message, data)
         {
         }
     }
