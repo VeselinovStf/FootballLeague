@@ -6,6 +6,13 @@ namespace FootballLeague.Core.Entities
 {
     public class Team : BaseEntity
     {
+        /// <summary>
+        /// EF CTOR
+        /// </summary>
+        public Team()
+        {
+
+        }
         public Team(string name, Statistic statistic)
         {
             Guard.StringIsNullEmptyOrWhiteSpace(name);

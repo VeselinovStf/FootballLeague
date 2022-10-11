@@ -5,6 +5,13 @@ namespace FootballLeague.Core.Entities
 {
     public class Match : BaseEntity
     {
+        /// <summary>
+        /// EF CTOR
+        /// </summary>
+        public Match()
+        {
+
+        }
         public Match(int homeTeamId, int awayTeamId, DateTime date, MatchResult result)
         {
             Guard.ValueLessThenEqual(0, homeTeamId);
