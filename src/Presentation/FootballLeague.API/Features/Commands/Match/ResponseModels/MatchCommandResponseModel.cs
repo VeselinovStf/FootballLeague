@@ -2,7 +2,7 @@
 
 namespace FootballLeague.API.Features.Commands.Match.ResponseModels
 {
-    public class MatchResponseModel
+    public class MatchCommandResponseModel
     {
         public int HomeTeamId { get; set; }
 

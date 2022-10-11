@@ -1,12 +1,12 @@
 ﻿namespace FootballLeague.API.Features.Commands.Match.ResponseModels
 {
-    public class CreateMatchResponseModel : BaseResponse<MatchResponseModel>
+    public class CreateMatchResponseModel : BaseResponse<MatchCommandResponseModel>
     {
         public CreateMatchResponseModel(bool isSuccess, string message) : base(isSuccess, message)
         {
         }
 
-        public CreateMatchResponseModel(bool isSuccess, string message, MatchResponseModel data) : base(isSuccess, message, data)
+        public CreateMatchResponseModel(bool isSuccess, string message, MatchCommandResponseModel data) : base(isSuccess, message, data)
         {
         }
     }
