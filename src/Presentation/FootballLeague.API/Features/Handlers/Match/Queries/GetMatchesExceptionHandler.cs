@@ -21,7 +21,7 @@ namespace FootballLeague.API.Features.Handlers.Match.Queries
         {
             _appLogger.LogError(exception.Message, exception);
 
-            state.SetHandled(new GetMatchesQueryResponseModel(false, exception.Message));
+            state.SetHandled(new GetMatchesQueryResponseModel(false, "Mathes Not Found"));
         }
     }
 }

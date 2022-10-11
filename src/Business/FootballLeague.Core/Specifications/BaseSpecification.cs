@@ -12,7 +12,13 @@ namespace FootballLeague.Core.Specifications
             this.Criteria = criteria;
         }
 
+        protected BaseSpecification(Expression<Func<T, bool>> criteria, Expression<Func<T, bool>> includeCriteria) : this(criteria)
+        {
+            this.IncludeCriteria = includeCriteria;
+        }
+
         public Expression<Func<T, bool>> Criteria { get; }
+        public Expression<Func<T, bool>> IncludeCriteria { get; }
 
         public List<Expression<Func<T, object>>> Includes { get; } = new List<Expression<Func<T, object>>>();
 

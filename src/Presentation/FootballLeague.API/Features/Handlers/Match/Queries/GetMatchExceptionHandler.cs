@@ -19,7 +19,7 @@ namespace FootballLeague.API.Features.Handlers.Match.Queries
         {
             _appLogger.LogError(exception.Message, exception);
 
-            state.SetHandled(new GetMatchQueryResponseModel(false, exception.Message));
+            state.SetHandled(new GetMatchQueryResponseModel(false, "Match not Found"));
         }
     }
 }

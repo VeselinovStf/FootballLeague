@@ -1,4 +1,5 @@
 ﻿using FootballLeague.Core.Entities;
+using System.Linq;
 
 namespace FootballLeague.Core.Specifications
 {
@@ -6,8 +7,8 @@ namespace FootballLeague.Core.Specifications
     {
         public TeamsWithPlayedMatchesSpecification(bool isDeleted) : base(s => s.IsDeleted == isDeleted)
         {
-            AddInclude(t => t.HomeMatches);
-            AddInclude(t => t.AwayMatches);
+            AddInclude(t => t.HomeMatches.Where(e => !e.IsDeleted));
+            AddInclude(t => t.AwayMatches.Where(e => !e.IsDeleted));
         }
     }
 }
