@@ -1,9 +1,9 @@
-﻿using FootballLeague.Core.Interfaces;
-using MediatR;
-using System.Threading.Tasks;
-using System.Threading;
-using FootballLeague.API.Features.Commands.Match;
+﻿using FootballLeague.API.Features.Commands.Match;
 using FootballLeague.API.Features.Commands.Match.ResponseModels;
+using FootballLeague.Core.Interfaces;
+using MediatR;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace FootballLeague.API.Features.Handlers.Match.Commands
 {

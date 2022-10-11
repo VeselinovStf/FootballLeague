@@ -1,9 +1,9 @@
-﻿using FootballLeague.API.Features.Queries.Match.ResponseModels;
+﻿using FootballLeague.API.Features.Handlers.Team.Commands;
 using FootballLeague.API.Features.Queries.Match;
+using FootballLeague.API.Features.Queries.Match.ResponseModels;
+using FootballLeague.Core.Interfaces;
 using MediatR.Pipeline;
 using System;
-using FootballLeague.API.Features.Handlers.Team.Commands;
-using FootballLeague.Core.Interfaces;
 
 namespace FootballLeague.API.Features.Handlers.Match.Queries
 {

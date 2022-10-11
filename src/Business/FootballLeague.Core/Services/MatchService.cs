@@ -38,8 +38,8 @@ namespace FootballLeague.Core.Services
             Guard.NotNull(awayTeam);
 
             var newMatch = new Match(
-                homeTeamId, 
-                awayTeamId, 
+                homeTeamId,
+                awayTeamId,
                 matchDate,
                 homeTeamScore,
                 awayTeamScore
@@ -76,9 +76,9 @@ namespace FootballLeague.Core.Services
         }
 
         public async Task UpdateMatchAsync(
-            int id, 
-            DateTime matchDate, 
-            int homeTeamResult, 
+            int id,
+            DateTime matchDate,
+            int homeTeamResult,
             int awayTeamResult)
         {
             Guard.ValueLessThenEqual(0, id);

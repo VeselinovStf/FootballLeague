@@ -17,8 +17,8 @@ namespace FootballLeague.API.Features.Handlers.Team.Commands
         }
         public async Task<DeleteTeamResponseModel> Handle(DeleteTeamRequest request, CancellationToken cancellationToken)
         {
-             await this._teamService
-                .DeleteTeamAsync(request.TeamId);
+            await this._teamService
+               .DeleteTeamAsync(request.TeamId);
 
             return new DeleteTeamResponseModel(true, "Deleted", request.TeamId);
         }

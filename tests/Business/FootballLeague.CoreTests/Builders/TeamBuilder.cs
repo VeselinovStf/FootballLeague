@@ -46,9 +46,9 @@ namespace FootballLeague.CoreTests.Builders
             var team2 = new Team("Team 1", new Statistic()) { Id = 2 };
             var matchDate = DateTime.Now;
 
-            var match1 = new Match(team1.Id, team2.Id, matchDate, 2,1);
-            var match2 = new Match(team2.Id, team1.Id, matchDate, 3,1);
-            
+            var match1 = new Match(team1.Id, team2.Id, matchDate, 2, 1);
+            var match2 = new Match(team2.Id, team1.Id, matchDate, 3, 1);
+
             team1.AddNewMatch(match1, match2);
 
             return new List<Team> { team1, team2 };

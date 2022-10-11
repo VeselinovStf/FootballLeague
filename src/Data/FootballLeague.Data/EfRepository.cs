@@ -63,7 +63,7 @@ namespace FootballLeague.Data
             // Preserve Entity - Set that is deleted
             entity.IsDeleted = true;
             _dbContext.Entry(entity).State = EntityState.Modified;
-            
+
             await _dbContext.SaveChangesAsync();
         }
 

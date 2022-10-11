@@ -1,8 +1,8 @@
 ﻿using FootballLeague.Core.Events;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using System.Threading.Tasks;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace FootballLeague.Data.Events
 {

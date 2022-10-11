@@ -1,6 +1,6 @@
-﻿using FootballLeague.Core.Interfaces;
-using FootballLeague.API.Features.Queries.Team;
+﻿using FootballLeague.API.Features.Queries.Team;
 using FootballLeague.API.Features.Team.Queries.ResponseModels;
+using FootballLeague.Core.Interfaces;
 using MediatR;
 using System.Collections.Generic;
 using System.Linq;

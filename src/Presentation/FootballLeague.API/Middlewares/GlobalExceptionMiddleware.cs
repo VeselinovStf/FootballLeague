@@ -1,5 +1,4 @@
 ﻿using FootballLeague.API.Features;
-using FootballLeague.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;

@@ -17,8 +17,8 @@ namespace FootballLeague.API.Features.Handlers.Team.Commands
         }
         public async Task<UpdateTeamResponseModel> Handle(UpdateTeamRequest request, CancellationToken cancellationToken)
         {
-             await this._teamService
-                .UpdateTeamAsync(request.TeamId, request.Name);
+            await this._teamService
+               .UpdateTeamAsync(request.TeamId, request.Name);
 
             return new UpdateTeamResponseModel(true, "Updated", new TeamResponseModel()
             {

@@ -1,7 +1,6 @@
 ﻿using FootballLeague.Data;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System;
 using System.Reflection;
 
 namespace FootballLeague.API.Configuration

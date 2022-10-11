@@ -1,9 +1,8 @@
-﻿using FootballLeague.API.Features.Commands.Team.ResponseModels;
-using FootballLeague.API.Features.Commands.Team;
+﻿using FootballLeague.API.Features.Commands.Team;
+using FootballLeague.API.Features.Commands.Team.ResponseModels;
+using FootballLeague.Core.Interfaces;
 using MediatR.Pipeline;
 using System;
-using System.Net;
-using FootballLeague.Core.Interfaces;
 
 namespace FootballLeague.API.Features.Handlers.Team.Commands
 {

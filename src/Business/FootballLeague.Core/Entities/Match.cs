@@ -30,10 +30,10 @@ namespace FootballLeague.Core.Entities
             Events.Add(new UpdateTeamStatisticEvent(AwayTeamId, awayTeamScore, homeTeamScore));
         }
 
-        public int HomeTeamId { get;private set; }
+        public int HomeTeamId { get; private set; }
         public Team HomeTeam { get; set; }
 
-        public int AwayTeamId { get;private set; }
+        public int AwayTeamId { get; private set; }
         public Team AwayTeam { get; set; }
 
         public DateTime Date { get; private set; }

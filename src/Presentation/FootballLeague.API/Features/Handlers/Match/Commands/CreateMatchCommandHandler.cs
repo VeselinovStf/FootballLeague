@@ -19,10 +19,10 @@ namespace FootballLeague.API.Features.Handlers.Match.Commands
         {
             var createdMatch = await this._matchService
                 .CreateMatchAsync(
-                    request.HomeTeamId, 
-                    request.AwayTeamId, 
-                    request.MatchDate, 
-                    request.HomeTeamScore, 
+                    request.HomeTeamId,
+                    request.AwayTeamId,
+                    request.MatchDate,
+                    request.HomeTeamScore,
                     request.AwayTeamScore);
 
             if (createdMatch == null)

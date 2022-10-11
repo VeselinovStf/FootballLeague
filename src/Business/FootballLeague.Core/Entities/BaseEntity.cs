@@ -1,5 +1,5 @@
-﻿using FootballLeague.Core.Interfaces;
-using FootballLeague.Core.Events;
+﻿using FootballLeague.Core.Events;
+using FootballLeague.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;

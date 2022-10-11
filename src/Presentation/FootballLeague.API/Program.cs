@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using System.IO;
-using System;
-using NLog.Web;
 using NLog;
+using NLog.Web;
+using System;
+using System.IO;
 
 namespace FootballLeague.API
 {

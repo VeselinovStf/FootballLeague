@@ -1,6 +1,4 @@
-﻿using FootballLeague.API.Features.Queries.Match.ResponseModels;
-
-namespace FootballLeague.API.Features.Commands.Match.ResponseModels
+﻿namespace FootballLeague.API.Features.Commands.Match.ResponseModels
 {
     public class UpdateMatchResponseModel : BaseResponse<MatchCommandResponseModel>
     {

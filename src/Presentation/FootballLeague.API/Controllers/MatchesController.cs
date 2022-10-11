@@ -1,12 +1,12 @@
-﻿using MediatR;
+﻿using FootballLeague.API.Extensions;
+using FootballLeague.API.Features.Commands.Match;
+using FootballLeague.API.Features.Commands.Match.ResponseModels;
+using FootballLeague.API.Features.Queries.Match;
+using FootballLeague.API.Features.Queries.Match.ResponseModels;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
-using FootballLeague.API.Features.Commands.Match.ResponseModels;
-using FootballLeague.API.Features.Commands.Match;
-using FootballLeague.API.Extensions;
-using FootballLeague.API.Features.Queries.Match.ResponseModels;
-using FootballLeague.API.Features.Queries.Match;
 
 namespace FootballLeague.API.Controllers
 {

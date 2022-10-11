@@ -16,7 +16,7 @@ namespace FootballLeague.Data
         public DbSet<Team> Teams { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<Statistic> Statistics { get; set; }
-      
+
         public FootballLeagueDbContext(DbContextOptions<FootballLeagueDbContext> options, IMediator mediator) : base(options)
         {
             this._mediator = mediator;

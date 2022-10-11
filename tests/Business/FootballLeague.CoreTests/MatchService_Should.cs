@@ -18,7 +18,7 @@ namespace FootballLeague.CoreTests
             var awayTeam = TeamBuilder.GetTeam(2);
 
             var matchDate = DateTime.Now;
-            var expectedMatch = new Core.Entities.Match(homeTeam.Id, awayTeam.Id,matchDate,2,1)
+            var expectedMatch = new Core.Entities.Match(homeTeam.Id, awayTeam.Id, matchDate, 2, 1)
             { Id = 1 };
 
             var matchServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Core.Entities.Match>>();
@@ -40,9 +40,9 @@ namespace FootballLeague.CoreTests
 
             var actialMatch = await matchService.CreateMatchAsync(
                 homeTeam.Id,
-                awayTeam.Id, 
+                awayTeam.Id,
                 matchDate,
-                expectedMatch.HomeTeamScore, 
+                expectedMatch.HomeTeamScore,
                 expectedMatch.AwayTeamScore);
 
             Assert.NotNull(actialMatch);
