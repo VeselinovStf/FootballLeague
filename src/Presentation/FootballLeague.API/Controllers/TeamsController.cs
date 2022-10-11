@@ -33,11 +33,20 @@ namespace FootballLeague.API.Controllers
             return Ok(await this._mediator.Send(new GetTeamsPlayedMatchesQuery()));
         }
 
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetTeamsQueryResponseModel))]
+        public async Task<IActionResult> GetTeams()
+        {
+            return Ok(await this._mediator.Send(new GetTeamsQuery()));
+        }
+
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CreateTeamResponseModel))]
         public async Task<IActionResult> CreateTeam(CreateTeamRequest request)
         {
             return Ok(await this._mediator.Send(request));
         }
+
+
     }
 }

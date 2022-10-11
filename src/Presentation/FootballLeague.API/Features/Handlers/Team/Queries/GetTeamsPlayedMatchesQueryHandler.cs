@@ -25,8 +25,11 @@ namespace FootballLeague.API.Features.Handlers.Team.Queries
             return new GetTeamsPlayedMatchesQueryResponseModel(true, "Returning Teams With Matches",
                 new List<TeamPlayedMatchesResponseModel>(teamsMatches.Select(t => new TeamPlayedMatchesResponseModel()
                 {
-                    TeamId = t.Id,
-                    TeamName = t.Name,
+                    Team = new TeamModel()
+                    {
+                        TeamId = t.Id,
+                        TeamName = t.Name
+                    },
                     HomeMatches = new List<TeamPlayedMatchResponseModel>(t.HomeMatches.Select(h => new TeamPlayedMatchResponseModel()
                     {
                         TeamId = h.AwayTeamId,
