@@ -34,7 +34,7 @@ namespace FootballLeague.Core.Services
         {
             var teamWitStatisticsSpecification = new TeamsWithStatiscticsSpecification(false);
 
-            return await this._teamRepository.ListAsyncBySpec(teamWitStatisticsSpecification);
+            return await this._teamRepository.ListAsyncBySpecAsync(teamWitStatisticsSpecification);
 
         }
 
@@ -49,7 +49,7 @@ namespace FootballLeague.Core.Services
         {
             var teamWitMatchesSpecification = new TeamsWithPlayedMatchesSpecification(false);
 
-            return await this._teamRepository.ListAsyncBySpec(teamWitMatchesSpecification);
+            return await this._teamRepository.ListAsyncBySpecAsync(teamWitMatchesSpecification);
         }
 
         public async Task UpdateTeamAsync(int id, string newName)

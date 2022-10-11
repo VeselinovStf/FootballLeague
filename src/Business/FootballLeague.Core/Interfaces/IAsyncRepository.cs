@@ -9,11 +9,11 @@ namespace FootballLeague.Core.Interfaces
         // TODO: IDeletable IsDeleted is not looked through all methods!
         Task<T> GetByIdAsync(int id);
 
-        T GetSingleBySpec(ISpecification<T> spec);
+        Task<T> GetSingleBySpecAsync(ISpecification<T> spec);
 
         Task<IReadOnlyList<T>> ListAllAsync();
 
-        Task<IReadOnlyList<T>> ListAsyncBySpec(ISpecification<T> spec);
+        Task<IReadOnlyList<T>> ListAsyncBySpecAsync(ISpecification<T> spec);
 
         Task<T> AddAsync(T entity);
 
