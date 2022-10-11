@@ -22,7 +22,7 @@ namespace FootballLeague.Core.Services
 
             // TODO: same name validation
 
-            return await this._teamRepository.AddAsync(new Team() { Name = name });
+            return await this._teamRepository.AddAsync(new Team(name, new Statistic()));
         }
 
         public async Task<IEnumerable<Team>> GetAllTeamsAsync()
@@ -61,7 +61,7 @@ namespace FootballLeague.Core.Services
 
             Guard.NotNull(currentTeam);
 
-            currentTeam.Name = newName;
+            currentTeam.UpdateName(newName);
 
             await this._teamRepository.UpdateAsync(currentTeam);
         }

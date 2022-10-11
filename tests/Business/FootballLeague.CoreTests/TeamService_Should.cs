@@ -3,7 +3,7 @@ using FootballLeague.Core.Exceptions;
 using FootballLeague.Core.Interfaces;
 using FootballLeague.Core.Services;
 using FootballLeague.Core.Specifications;
-using FootballLeague.CoreTests.Stubs;
+using FootballLeague.CoreTests.Builders;
 using Moq;
 using NUnit.Framework;
 using System.Linq;
@@ -16,7 +16,7 @@ namespace FootballLeague.CoreTests
         [Test]
         public async Task GetAllTeamsRankingAsync()
         {
-            var expectedTeamsWithRanking = TeamStub.GetTeamsWithStatisticsStub();
+            var expectedTeamsWithRanking = TeamBuilder.GetTeamsWithStatistics();
 
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 
@@ -35,7 +35,7 @@ namespace FootballLeague.CoreTests
         [Test]
         public async Task GetAllTeamsPlayedMatchesAsync()
         {
-            var expectedTeamsWithMatches = TeamStub.GetTeamsWithMatchesStub();
+            var expectedTeamsWithMatches = TeamBuilder.GetTeamsWithMatches();
 
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 
@@ -65,7 +65,7 @@ namespace FootballLeague.CoreTests
         [Test]
         public async Task GetAllTeamsAsync()
         {
-            var expectedTeams = TeamStub.GetTeamsStub();
+            var expectedTeams = TeamBuilder.GetTeamsStub();
 
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 
@@ -86,7 +86,7 @@ namespace FootballLeague.CoreTests
         public async Task GetTeamByIdAsync()
         {
             var expectedId = 1;
-            var expectedTeam = TeamStub.GetTeamStub(expectedId);
+            var expectedTeam = TeamBuilder.GetTeam(expectedId);
 
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 
@@ -107,7 +107,7 @@ namespace FootballLeague.CoreTests
         public void Throws_ArgumentException_When_GetTeamByIdAsync_Team_Id_Is_Zero()
         {
             var expectedId = 0;
-            var expectedTeam = TeamStub.GetTeamStub(expectedId);
+            var expectedTeam = TeamBuilder.GetTeam(expectedId);
 
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 
@@ -123,11 +123,7 @@ namespace FootballLeague.CoreTests
         [Test]
         public async Task CreateTeamAsync_When_Valid_ParamersAre_Passed()
         {
-            var expectedTeam = new Team()
-            {
-                Id = 1,
-                Name = "Team 1"
-            };
+            var expectedTeam = TeamBuilder.GetTeam(1);
 
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 
@@ -149,11 +145,7 @@ namespace FootballLeague.CoreTests
         [TestCase(null)]
         public void Throws_ValidationException_When_CreateTeamAsync_Is_Called_With_Invalid_Parameter(string name)
         {
-            var expectedTeam = new Team()
-            {
-                Id = 1,
-                Name = "Team 1"
-            };
+            var expectedTeam = TeamBuilder.GetTeam(1);
 
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 
@@ -169,11 +161,7 @@ namespace FootballLeague.CoreTests
         [Test]
         public void Throws_ValidationException_When_UpdateTeamAsync_TeamId_Is_Invalid()
         {
-            var expectedTeam = new Team()
-            {
-                Id = 1,
-                Name = "Team 1"
-            };
+            var expectedTeam = TeamBuilder.GetTeam(1);
 
             var newName = "Team XXX";
 
@@ -196,11 +184,7 @@ namespace FootballLeague.CoreTests
         [TestCase(null)]
         public void Throws_ValidationException_When_UpdateTeamAsync_Name_Is_Invalid(string newName)
         {
-            var expectedTeam = new Team()
-            {
-                Id = 1,
-                Name = "Team 1"
-            };
+            var expectedTeam = TeamBuilder.GetTeam(1);
 
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 
@@ -219,11 +203,7 @@ namespace FootballLeague.CoreTests
         [Test]
         public void Throws_ValidationException_When_UpdateTeamAsync_Team_To_Update_Is_Not_Found()
         {
-            var expectedTeam = new Team()
-            {
-                Id = 1,
-                Name = "Team 1"
-            };
+            var expectedTeam = TeamBuilder.GetTeam(1);
 
             var newName = "Team XXX";
 
@@ -244,11 +224,7 @@ namespace FootballLeague.CoreTests
         [Test]
         public void Throws_ValidationException_When_DeleteTeamAsync_TeamId_Is_Invalid()
         {
-            var expectedTeam = new Team()
-            {
-                Id = 1,
-                Name = "Team 1"
-            };
+            var expectedTeam = TeamBuilder.GetTeam(1);
 
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 
@@ -267,11 +243,7 @@ namespace FootballLeague.CoreTests
         [Test]
         public void Throws_ValidationException_When_DeleteTeamAsync_Team_To_Update_Is_Not_Found()
         {
-            var expectedTeam = new Team()
-            {
-                Id = 1,
-                Name = "Team 1"
-            };
+            var expectedTeam = TeamBuilder.GetTeam(1);
 
             var teamServiceAsyncRepositoryMock = new Mock<IAsyncRepository<Team>>();
 

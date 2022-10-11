@@ -1,6 +1,7 @@
 ﻿using FootballLeague.Core.Entities;
 using FootballLeague.Core.Interfaces;
 using FootballLeague.Core.Services;
+using FootballLeague.CoreTests.Builders;
 using Moq;
 using NUnit.Framework;
 using System;
@@ -13,17 +14,9 @@ namespace FootballLeague.CoreTests
         [Test]
         public async Task CreateMatchAsync_When_Valid_ParamersAre_Passed()
         {
-            var homeTeam = new Team()
-            {
-                Id = 1,
-                Name = "Team 1"
-            };
+            var homeTeam = TeamBuilder.GetTeam(1);
 
-            var awayTeam = new Team()
-            {
-                Id = 2,
-                Name = "Team 2"
-            };
+            var awayTeam = TeamBuilder.GetTeam(2);
 
             var matchDate = DateTime.Now;
             var expectedMatch = new Core.Entities.Match()
