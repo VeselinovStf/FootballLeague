@@ -1,4 +1,5 @@
 ﻿using FootballLeague.API.Features.Queries.Team;
+using FootballLeague.API.Features.Queries.Team.ResponseModels;
 using FootballLeague.API.Features.Team.Queries.ResponseModels;
 using MediatR;
 using Microsoft.AspNetCore.Http;
@@ -21,6 +22,13 @@ namespace FootballLeague.API.Controllers
         public async Task<IActionResult> GetTeamsRankings()
         {
             return Ok(await this._mediator.Send(new GetTeamsRankingQuery()));
+        }
+
+        [HttpGet("played")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetTeamsPlayedMatchesQueryResponseModel))]
+        public async Task<IActionResult> GetTeamsPlayedMatches()
+        {
+            return Ok(await this._mediator.Send(new GetTeamsPlayedMatchesQuery()));
         }
     }
 }
