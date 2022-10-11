@@ -15,9 +15,20 @@ namespace FootballLeague.API.Features.Handlers.Match.Queries
         {
             this._matchService = matchService;
         }
-        public Task<GetMatchQueryResponseModel> Handle(GetMatchQuery request, CancellationToken cancellationToken)
+        public async Task<GetMatchQueryResponseModel> Handle(GetMatchQuery request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            var serviceCall = await this._matchService
+                .GetMatchByIdAsync(request.Id);
+
+            return new GetMatchQueryResponseModel(true, "Returning Match", new MathQueryResponseModel()
+            {
+                MatchId = serviceCall.Id,
+                AwayTeamId = serviceCall.AwayTeamId,
+                HomeTeamId = serviceCall.HomeTeamId,
+                AwayTeamScore = serviceCall.AwayTeamScore,
+                Date = serviceCall.Date,
+                HomeTeamScore = serviceCall.HomeTeamScore
+            });
         }
     }
 }

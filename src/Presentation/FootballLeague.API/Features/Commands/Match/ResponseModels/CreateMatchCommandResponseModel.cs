@@ -2,8 +2,10 @@
 
 namespace FootballLeague.API.Features.Commands.Match.ResponseModels
 {
-    public class MatchCommandResponseModel
+    public class CreateMatchCommandResponseModel
     {
+        public int AwayTeamId { get; set; }
+        public int HomeTeamId { get; set; }
         public int MatchId { get; set; }
 
         public DateTime MatchDate { get; set; }

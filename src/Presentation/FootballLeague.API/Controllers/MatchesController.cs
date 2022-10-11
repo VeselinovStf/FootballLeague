@@ -23,7 +23,7 @@ namespace FootballLeague.API.Controllers
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CreateMatchResponseModel))]
         public async Task<IActionResult> CreateTeam(CreateMatchRequest request)
         {
-            return Ok(await this._mediator.Send(request));
+            return ApiResponseExtensions.ValidateResponseModel(await this._mediator.Send(request));
         }
 
         [HttpGet]

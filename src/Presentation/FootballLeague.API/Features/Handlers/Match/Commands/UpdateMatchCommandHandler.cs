@@ -16,9 +16,22 @@ namespace FootballLeague.API.Features.Handlers.Match.Commands
             this._matchService = matchService;
         }
 
-        public Task<UpdateMatchResponseModel> Handle(UpdateMatchRequest request, CancellationToken cancellationToken)
+        public async Task<UpdateMatchResponseModel> Handle(UpdateMatchRequest request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            await this._matchService
+                .UpdateMatchAsync(
+                    request.MatchId,
+                    request.Date,
+                    request.HomeTeamScore,
+                    request.AwayTeamScore);
+
+            return new UpdateMatchResponseModel(true, "Updated", new MatchCommandResponseModel()
+            {
+                MatchId = request.MatchId,
+                AwayTeamScore = request.AwayTeamScore,
+                HomeTeamScore = request.HomeTeamScore,
+                MatchDate = request.Date
+            });
         }
     }
 }

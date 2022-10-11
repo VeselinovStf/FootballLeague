@@ -8,10 +8,7 @@ namespace FootballLeague.API.Features.Commands.Match
     public class UpdateMatchRequest : IRequest<UpdateMatchResponseModel>
     {
         [Required]
-        public int HomeTeamId { get; set; }
-
-        [Required]
-        public int AwayTeamId { get; set; }
+        public int MatchId { get; set; }
 
         [Required]
         public DateTime Date { get; set; }

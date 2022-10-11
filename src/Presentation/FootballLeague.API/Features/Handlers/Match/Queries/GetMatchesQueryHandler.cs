@@ -2,6 +2,8 @@
 using FootballLeague.API.Features.Queries.Match.ResponseModels;
 using FootballLeague.Core.Interfaces;
 using MediatR;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -16,9 +18,21 @@ namespace FootballLeague.API.Features.Handlers.Match.Queries
             this._matchService = matchService;
         }
 
-        public Task<GetMatchesQueryResponseModel> Handle(GetMatchesQuery request, CancellationToken cancellationToken)
+        public async Task<GetMatchesQueryResponseModel> Handle(GetMatchesQuery request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            var serviceCall = await this._matchService
+                .GetAllMatchesAsync();
+
+            return new GetMatchesQueryResponseModel(true, "Returning Matches",
+                new List<MathQueryResponseModel>(serviceCall.Select(m => new MathQueryResponseModel()
+                {
+                    MatchId = m.Id,
+                    AwayTeamId = m.AwayTeamId,
+                    AwayTeamScore = m.AwayTeamScore,
+                    Date = m.Date,
+                    HomeTeamId = m.HomeTeamId,
+                    HomeTeamScore = m.HomeTeamScore
+                })));
         }
     }
 }

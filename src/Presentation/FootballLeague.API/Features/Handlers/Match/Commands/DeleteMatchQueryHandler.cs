@@ -16,9 +16,12 @@ namespace FootballLeague.API.Features.Handlers.Match.Commands
             this._matchService = matchService;
         }
 
-        public Task<DeleteMatchResponseModel> Handle(DeleteMatchRequestModel request, CancellationToken cancellationToken)
+        public async Task<DeleteMatchResponseModel> Handle(DeleteMatchRequestModel request, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            await this._matchService
+                .DeleteMatchAsync(request.MatchId);
+
+            return new DeleteMatchResponseModel(true, "Deleted", request.MatchId);
         }
     }
 }
