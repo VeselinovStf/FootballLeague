@@ -40,7 +40,7 @@ namespace FootballLeague.API.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetTeamsQueryResponseModel))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CreateTeamResponseModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(GetTeamsQueryResponseModel))]
 
         public async Task<IActionResult> GetTeams()
         {
@@ -49,7 +49,7 @@ namespace FootballLeague.API.Controllers
 
         [HttpGet("id")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetTeamQueryResponseModel))]
-        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CreateTeamResponseModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(GetTeamQueryResponseModel))]
 
         public async Task<IActionResult> GetTeam(int id)
         {
