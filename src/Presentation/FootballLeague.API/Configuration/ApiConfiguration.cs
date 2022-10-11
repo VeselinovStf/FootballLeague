@@ -1,5 +1,7 @@
-﻿using MediatR;
+﻿using FootballLeague.Data;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
+using System;
 using System.Reflection;
 
 namespace FootballLeague.API.Configuration
@@ -9,7 +11,15 @@ namespace FootballLeague.API.Configuration
         public static void AddAPIServices(this IServiceCollection services)
         {
             services.AddSwaggerGen();
-            services.AddMediatR(Assembly.GetExecutingAssembly());
+
+
+            var assemblies = new Assembly[]
+            {
+                typeof(Startup).Assembly,
+                typeof(FootballLeagueDbContext).Assembly,
+            };
+
+            services.AddMediatR(assemblies);
         }
     }
 }

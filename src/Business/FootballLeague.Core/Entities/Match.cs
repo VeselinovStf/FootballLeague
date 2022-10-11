@@ -1,4 +1,5 @@
-﻿using FootballLeague.Core.Validations;
+﻿using FootballLeague.Core.Events;
+using FootballLeague.Core.Validations;
 using System;
 
 namespace FootballLeague.Core.Entities
@@ -24,6 +25,9 @@ namespace FootballLeague.Core.Entities
             Date = date;
             HomeTeamScore = homeTeamScore;
             AwayTeamScore = awayTeamScore;
+
+            Events.Add(new UpdateTeamStatisticEvent(HomeTeamId, homeTeamScore, awayTeamScore));
+            Events.Add(new UpdateTeamStatisticEvent(AwayTeamId, awayTeamScore, homeTeamScore));
         }
 
         public int HomeTeamId { get;private set; }
