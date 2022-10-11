@@ -8,5 +8,11 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Business\FootballLeague.Core\FootballLeague.Core.csproj" />
+    <ProjectReference Include="..\..\Data\FootballLeague.Data\FootballLeague.Data.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\FootballLeague.Infrastructure\FootballLeague.Infrastructure.csproj" />
+  </ItemGroup>
+
 
 </Project>

@@ -1,3 +1,4 @@
+using FootballLeague.API.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -8,15 +9,24 @@ namespace FootballLeague.API
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment hostEnvironment)
         {
-            Configuration = configuration;
+            this.Configuration = configuration;
+            this.Env = hostEnvironment;
         }
 
         public IConfiguration Configuration { get; }
 
+        public IWebHostEnvironment Env { get; }
+
+
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCoreServices();
+            services.AddDataServices(Configuration, Env);
+            services.AddInfrastructureServices();
+            services.AddAPIServices();
+
             services.AddControllers();
         }
 
