@@ -1,4 +1,4 @@
-﻿namespace FootballLeague.API.Features.Queries.Team.ResponseModels
+﻿namespace FootballLeague.API.Features.Commands.Team.ResponseModels
 {
     public class CreateTeamResponseModel : BaseResponse<TeamResponseModel>
     {
