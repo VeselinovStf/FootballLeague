@@ -46,7 +46,7 @@ namespace FootballLeague.Data
             {
                 var entity = (BaseEntity)entry.Entity;
 
-                if (entry.State == EntityState.Added && entity.CreatedAt == null)
+                if (entry.State == EntityState.Added)
                 {
                     entity.CreatedAt = DateTime.Now;
                 }
