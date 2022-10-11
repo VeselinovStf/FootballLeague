@@ -48,6 +48,9 @@ namespace FootballLeague.Core.Entities
 
             this.HomeTeamScore = homeTeamScore;
             this.AwayTeamScore = awayTeamScore;
+
+            Events.Add(new CleanTeamStatisticsEvent(HomeTeamId, homeTeamScore, awayTeamScore));
+            Events.Add(new CleanTeamStatisticsEvent(AwayTeamId, awayTeamScore, homeTeamScore));
         }
 
         public void UpdateMatchDate(DateTime newDate)
