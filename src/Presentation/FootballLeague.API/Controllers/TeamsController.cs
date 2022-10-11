@@ -1,4 +1,5 @@
-﻿using FootballLeague.API.Features.Commands.Team;
+﻿using FootballLeague.API.Extensions;
+using FootballLeague.API.Features.Commands.Team;
 using FootballLeague.API.Features.Commands.Team.ResponseModels;
 using FootballLeague.API.Features.Queries.Team;
 using FootballLeague.API.Features.Queries.Team.ResponseModels;
@@ -21,52 +22,62 @@ namespace FootballLeague.API.Controllers
 
         [HttpGet("rankings")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetTeamsRankingQueryResponseModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(GetTeamsRankingQueryResponseModel))]
+
         public async Task<IActionResult> GetTeamsRankings()
         {
-            return Ok(await this._mediator.Send(new GetTeamsRankingQuery()));
+            return ApiResponseExtensions.ValidateResponseModel(await this._mediator.Send(new GetTeamsRankingQuery()));
         }
 
         [HttpGet("played")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetTeamsPlayedMatchesQueryResponseModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(GetTeamsPlayedMatchesQueryResponseModel))]
+
         public async Task<IActionResult> GetTeamsPlayedMatches()
         {
-            return Ok(await this._mediator.Send(new GetTeamsPlayedMatchesQuery()));
+            return ApiResponseExtensions.ValidateResponseModel(await this._mediator.Send(new GetTeamsPlayedMatchesQuery()));
         }
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetTeamsQueryResponseModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CreateTeamResponseModel))]
+
         public async Task<IActionResult> GetTeams()
         {
-            return Ok(await this._mediator.Send(new GetTeamsQuery()));
+            return ApiResponseExtensions.ValidateResponseModel(await this._mediator.Send(new GetTeamsQuery()));
         }
 
         [HttpGet("id")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetTeamQueryResponseModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CreateTeamResponseModel))]
+
         public async Task<IActionResult> GetTeam(int id)
         {
-            return Ok(await this._mediator.Send(new GetTeamQuery(id)));
+            return ApiResponseExtensions.ValidateResponseModel(await this._mediator.Send(new GetTeamQuery(id)));
         }
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CreateTeamResponseModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CreateTeamResponseModel))]
         public async Task<IActionResult> CreateTeam(CreateTeamRequest request)
         {
-            return Ok(await this._mediator.Send(request));
+            return ApiResponseExtensions.ValidateResponseModel(await this._mediator.Send(request));
         }
 
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UpdateTeamResponseModel))]
-        public async Task<IActionResult> CreateTeam(UpdateTeamRequest request)
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(UpdateTeamResponseModel))]
+        public async Task<IActionResult> UpdateTeam(UpdateTeamRequest request)
         {
-            return Ok(await this._mediator.Send(request));
+            return ApiResponseExtensions.ValidateResponseModel(await this._mediator.Send(request));
         }
 
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(DeleteTeamResponseModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(DeleteTeamResponseModel))]
         public async Task<IActionResult> DeleteTeam(DeleteTeamRequest request)
         {
-            return Ok(await this._mediator.Send(request));
+            return ApiResponseExtensions.ValidateResponseModel(await this._mediator.Send(request));
         }
-
     }
 }

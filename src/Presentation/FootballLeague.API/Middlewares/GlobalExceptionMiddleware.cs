@@ -1,6 +1,7 @@
 ﻿using FootballLeague.API.Features;
 using FootballLeague.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Net;
@@ -11,11 +12,11 @@ namespace FootballLeague.API.Middlewares
     public class GlobalExceptionMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly IAppLogger<GlobalExceptionMiddleware> _logger;
+        private readonly ILogger<GlobalExceptionMiddleware> _logger;
 
         public GlobalExceptionMiddleware(
             RequestDelegate next,
-            IAppLogger<GlobalExceptionMiddleware> logger)
+            ILogger<GlobalExceptionMiddleware> logger)
         {
             this._next = next;
             this._logger = logger;

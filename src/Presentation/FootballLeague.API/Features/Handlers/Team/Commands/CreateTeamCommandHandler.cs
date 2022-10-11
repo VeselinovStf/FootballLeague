@@ -21,6 +21,8 @@ namespace FootballLeague.API.Features.Handlers.Team.Commands
             var createdTeam = await this._teamService
                 .CreateTeamAsync(request.Name);
 
+            if (createdTeam == null) return new CreateTeamResponseModel(false, "Unable to Create Team");
+
             return new CreateTeamResponseModel(true, "Team Created", new TeamResponseModel()
             {
                 Id = createdTeam.Id,

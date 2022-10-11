@@ -20,6 +20,8 @@ namespace FootballLeague.API.Features.Handlers.Team.Queries
             var serviceCall = await this._teamService
                 .GetTeamByIdAsync(request.Id);
 
+            if (serviceCall == null) return new GetTeamQueryResponseModel(false, "Unable to find Team");
+
             return new GetTeamQueryResponseModel(true, "Returning Team", new TeamModel()
             {
                 TeamId = serviceCall.Id,
