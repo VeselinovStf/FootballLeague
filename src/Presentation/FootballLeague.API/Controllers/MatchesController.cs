@@ -44,7 +44,7 @@ namespace FootballLeague.API.Controllers
         [HttpGet("id")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetMatchQueryResponseModel))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(GetMatchQueryResponseModel))]
-        public async Task<IActionResult> GetMatch([Required]int id)
+        public async Task<IActionResult> GetMatch([Required] int id)
         {
             return ApiResponseExtensions.ValidateResponseModel(await this._mediator.Send(new GetMatchQuery(id)));
         }

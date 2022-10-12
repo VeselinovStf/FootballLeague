@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FootballLeague.Infrastructure.Identity.Models
+﻿namespace FootballLeague.Infrastructure.Identity.Models
 {
     public class JwtAuthResult : BaseAuthResult
     {

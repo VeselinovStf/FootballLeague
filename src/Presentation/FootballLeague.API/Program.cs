@@ -52,8 +52,8 @@ namespace FootballLeague.API
                     }
 
                     AppIdentityDbContextSeed.SeedAsync(
-                        identityContext, 
-                        userManager, 
+                        identityContext,
+                        userManager,
                         roleManager,
                         adminSeedPassword)
                         .GetAwaiter()

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using FootballLeague.Core.Validations;
+﻿using FootballLeague.Core.Validations;
 using FootballLeague.Infrastructure.Identity.Entities;
 using FootballLeague.Infrastructure.Identity.Interfaces;
 using FootballLeague.Infrastructure.Identity.Models;
 using Microsoft.AspNetCore.Identity;
+using System;
+using System.Collections.Generic;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace FootballLeague.Infrastructure.Identity.JWT
 {

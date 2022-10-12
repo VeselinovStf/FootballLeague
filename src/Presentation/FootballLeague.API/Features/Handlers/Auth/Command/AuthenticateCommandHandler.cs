@@ -31,7 +31,7 @@ namespace FootballLeague.API.Features.Handlers.Auth.Command
 
             if (!result.Succeeded)
             {
-                this._logger.LogWarn($"Sign In Result: {result.Succeeded.ToString()}",result);
+                this._logger.LogWarn($"Sign In Result: {result.Succeeded.ToString()}", result);
 
                 return new AuthenticationResponseModel(false, "Unable to login");
             }

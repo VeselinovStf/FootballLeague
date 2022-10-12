@@ -1,6 +1,5 @@
 ﻿using FootballLeague.Core.Validations;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace FootballLeague.Core.Entities
 {

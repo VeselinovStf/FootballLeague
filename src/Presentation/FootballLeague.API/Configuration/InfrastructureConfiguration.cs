@@ -22,7 +22,7 @@ namespace FootballLeague.API.Configuration
     public static class InfrastructureConfiguration
     {
         public static void AddInfrastructureServices(
-            this IServiceCollection services, 
+            this IServiceCollection services,
             IConfiguration configuration,
             IWebHostEnvironment hostEnvironment)
         {

@@ -9,8 +9,8 @@ namespace FootballLeague.Infrastructure.Identity
     public static class AppIdentityDbContextSeed
     {
         public static async Task SeedAsync(
-            AppIdentityDbContext identityDbContext, 
-            UserManager<AppUser> userManager, 
+            AppIdentityDbContext identityDbContext,
+            UserManager<AppUser> userManager,
             RoleManager<IdentityRole> roleManager,
             string adminDefaultPassword)
         {
@@ -21,7 +21,7 @@ namespace FootballLeague.Infrastructure.Identity
 
             if (!await identityDbContext.Users.AnyAsync())
             {
-               // await roleManager.CreateAsync(new IdentityRole(AppRoles.ADMINISTRATOR.ToString()));
+                // await roleManager.CreateAsync(new IdentityRole(AppRoles.ADMINISTRATOR.ToString()));
 
                 string adminUserName = "admin@footballleague.com";
                 var adminUser = new AppUser { UserName = adminUserName, Email = adminUserName };
@@ -29,7 +29,7 @@ namespace FootballLeague.Infrastructure.Identity
                 adminUser = await userManager.FindByNameAsync(adminUserName);
                 await userManager.AddToRoleAsync(adminUser, AppRoles.ADMINISTRATOR.ToString());
             }
-         
+
         }
     }
 }

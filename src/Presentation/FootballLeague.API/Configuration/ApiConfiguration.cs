@@ -17,7 +17,7 @@ namespace FootballLeague.API.Configuration
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Description = @"Enter 'Bearer' [space] and then your token in the text input below. Example: 'Bearer 12345abcdef'",
-                    Name = "Authorization",                   
+                    Name = "Authorization",
                     BearerFormat = "JWT",
                     In = ParameterLocation.Header,
                     Type = SecuritySchemeType.ApiKey,

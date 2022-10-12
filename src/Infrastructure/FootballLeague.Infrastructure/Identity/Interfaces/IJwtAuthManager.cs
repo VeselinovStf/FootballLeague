@@ -1,8 +1,8 @@
 ﻿using FootballLeague.Infrastructure.Identity.Models;
-using System.Security.Claims;
 using System;
-using System.IdentityModel.Tokens.Jwt;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace FootballLeague.Infrastructure.Identity.Interfaces
 {
