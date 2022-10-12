@@ -20,6 +20,8 @@ namespace FootballLeague.API.Features.Handlers.Match.Queries
             var serviceCall = await this._matchService
                 .GetMatchByIdAsync(request.Id);
 
+            if (serviceCall == null) return new GetMatchQueryResponseModel(false, "Unable to find Match");
+
             return new GetMatchQueryResponseModel(true, "Returning Match", new MathQueryResponseModel()
             {
                 MatchId = serviceCall.Id,
