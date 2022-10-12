@@ -8,7 +8,7 @@ namespace FootballLeague.Core.Validations
         {
             if (value <= limit)
             {
-                throw new ValidationException($"Value is less than equal to: {limit}");
+                throw new ValidationException($"Value, {value} is less than equal to: {limit}");
             }
         }
 
@@ -16,7 +16,7 @@ namespace FootballLeague.Core.Validations
         {
             if (obj == null)
             {
-                throw new ValidationException("Object is null");
+                throw new ValidationException($"{typeof(T)} is null/not found");
             }
         }
 
