@@ -7,7 +7,7 @@ using System;
 
 namespace FootballLeague.API.Features.Handlers.Team.Queries
 {
-    public class GetTeamsExceptionHandler : RequestExceptionHandler<GetTeamsPlayedMatchesQuery, GetTeamsPlayedMatchesQueryResponseModel>
+    public class GetTeamsExceptionHandler : RequestExceptionHandler<GetTeamsQuery, GetTeamsQueryResponseModel>
     {
         private readonly IAppLogger<DeleteTeamExceptionHandler> _appLogger;
 
@@ -15,11 +15,11 @@ namespace FootballLeague.API.Features.Handlers.Team.Queries
         {
             this._appLogger = appLogger;
         }
-        protected override void Handle(GetTeamsPlayedMatchesQuery request, Exception exception, RequestExceptionHandlerState<GetTeamsPlayedMatchesQueryResponseModel> state)
+        protected override void Handle(GetTeamsQuery request, Exception exception, RequestExceptionHandlerState<GetTeamsQueryResponseModel> state)
         {
             _appLogger.LogError(exception.Message, exception);
 
-            state.SetHandled(new GetTeamsPlayedMatchesQueryResponseModel(false, exception.Message));
+            state.SetHandled(new GetTeamsQueryResponseModel(false, exception.Message));
         }
     }
 }
