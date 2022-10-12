@@ -14,6 +14,11 @@ Football League application for managing your virtual league
 	- After the result is added, the table with the rankings and results in the customers portal should be updated accordingly
 	- Should have following scoring: win: 3 points, draw: 1 point and loss: 0 points
 
+## DB Migration
+
+- Identity: Project Infrastructure - Update-Database Initial -Context AppIdentityDbContext
+- Data: Project Data - Update-Database Initial -Context FootballLeagueDbContext
+
 ## Development Authentication Credentials
 
 ```

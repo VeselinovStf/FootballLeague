@@ -26,5 +26,9 @@
     <ProjectReference Include="..\..\Infrastructure\FootballLeague.Infrastructure\FootballLeague.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Logs\" />
+  </ItemGroup>
+
 
 </Project>
