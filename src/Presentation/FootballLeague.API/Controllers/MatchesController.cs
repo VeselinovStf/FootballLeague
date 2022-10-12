@@ -23,6 +23,7 @@ namespace FootballLeague.API.Controllers
         [Authorize(Roles = "ADMINISTRATOR")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CreateMatchResponseModel))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(CreateMatchResponseModel))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<IActionResult> CreateMatch(CreateMatchRequest request)
         {
