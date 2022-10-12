@@ -19,7 +19,7 @@ namespace FootballLeague.API.Features.Handlers.Team.Queries
         {
             _appLogger.LogError(exception.Message, exception);
 
-            state.SetHandled(new GetTeamsQueryResponseModel(false, exception.Message));
+            state.SetHandled(new GetTeamsQueryResponseModel(false, "Teams Not Found"));
         }
     }
 }

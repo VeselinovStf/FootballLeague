@@ -19,7 +19,7 @@ namespace FootballLeague.API.Features.Handlers.Team.Commands
         {
             _appLogger.LogError(exception.Message, exception);
 
-            state.SetHandled(new UpdateTeamResponseModel(false, exception.Message));
+            state.SetHandled(new UpdateTeamResponseModel(false, "Unable to Update Team"));
         }
     }
 }

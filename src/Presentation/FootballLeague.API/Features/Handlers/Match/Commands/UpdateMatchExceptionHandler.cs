@@ -19,7 +19,7 @@ namespace FootballLeague.API.Features.Handlers.Match.Commands
         {
             _appLogger.LogError(exception.Message, exception);
 
-            state.SetHandled(new UpdateMatchResponseModel(false, exception.Message));
+            state.SetHandled(new UpdateMatchResponseModel(false, "Unable To Update Match"));
         }
     }
 }

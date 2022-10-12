@@ -18,7 +18,7 @@ namespace FootballLeague.API.Features.Handlers.Team.Commands
         {
             _appLogger.LogError(exception.Message, exception);
 
-            state.SetHandled(new DeleteTeamResponseModel(false, exception.Message));
+            state.SetHandled(new DeleteTeamResponseModel(false, "Unable To Delete Team"));
         }
     }
 }

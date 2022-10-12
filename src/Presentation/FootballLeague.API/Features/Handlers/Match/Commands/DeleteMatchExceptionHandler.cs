@@ -19,7 +19,7 @@ namespace FootballLeague.API.Features.Handlers.Match.Commands
         {
             _appLogger.LogError(exception.Message, exception);
 
-            state.SetHandled(new DeleteMatchResponseModel(false, exception.Message));
+            state.SetHandled(new DeleteMatchResponseModel(false, "Unable To Delete Match"));
         }
     }
 }

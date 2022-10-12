@@ -20,7 +20,7 @@ namespace FootballLeague.API.Features.Handlers.Team.Queries
         {
             _appLogger.LogError(exception.Message, exception);
 
-            state.SetHandled(new GetTeamsRankingQueryResponseModel(false, exception.Message));
+            state.SetHandled(new GetTeamsRankingQueryResponseModel(false, "Teams Ranking Not Found"));
         }
     }
 }
