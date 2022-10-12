@@ -32,6 +32,7 @@ namespace FootballLeague.API.Features.Handlers.Match.Commands
 
             return new CreateMatchResponseModel(true, "Match Created", new CreateMatchCommandResponseModel()
             {
+                MatchId = createdMatch.Id,
                 AwayTeamId = createdMatch.AwayTeamId,
                 HomeTeamId = createdMatch.HomeTeamId,
                 AwayTeamScore = createdMatch.AwayTeamScore,
