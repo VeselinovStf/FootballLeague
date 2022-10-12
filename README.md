@@ -24,3 +24,27 @@ Football League application for managing your virtual league
 ```
 
 ## NOTE: Production Creadentials are stored in appsettings.json, DONT USE IN ACTUAL PRODUCTION ENVIRONMENT
+
+## Endpoints
+
+### Public
+
+- Matches
+ - GET /api/v1/Matches
+ - GET /api/v1/Matches/id
+- Teams
+ - GET /api/v1/Teams/rankings
+ - GET /api/v1/Teams/played
+ - GET /api/v1/Teams
+ - GET /api/v1/Teams/id
+
+### Authorized ( Administrator Only )
+
+- Matches
+ - POST /api/v1/Matches
+ - PUT /api/v1/Matches
+ - DELETE /api/v1/Matches
+- Teams
+ - POST /api/v1/Teams
+ - PUT /api/v1/Teams
+ - DELETE /api/v1/Teams
