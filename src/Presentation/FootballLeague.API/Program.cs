@@ -1,4 +1,10 @@
+using FootballLeague.Infrastructure.Data;
+using FootballLeague.Infrastructure.Identity;
+using FootballLeague.Infrastructure.Identity.Entities;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using NLog;
@@ -22,7 +28,40 @@ namespace FootballLeague.API
             try
             {
                 logger.Debug("init main");
-                CreateHostBuilder(args).Build().Run();
+                var host = CreateHostBuilder(args).Build();
+
+                using (var scope = host.Services.CreateScope())
+                {
+                    var serviceProvider = scope.ServiceProvider;
+
+                    var userManager = serviceProvider.GetRequiredService<UserManager<AppUser>>();
+                    var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+                    var identityContext = serviceProvider.GetRequiredService<AppIdentityDbContext>();
+                    var environment = serviceProvider.GetRequiredService<IWebHostEnvironment>();
+                    var config = serviceProvider.GetRequiredService<IConfiguration>();
+
+                    var adminSeedPassword = string.Empty;
+                    if (environment.IsDevelopment())
+                    {
+                        adminSeedPassword = config.GetSection("Development_AdminPassword").Value;
+                    }
+                    else
+                    {
+                        //TODO: Add administration pass from secured source
+                        adminSeedPassword = config.GetSection("Production_DevAdminPassword").Value;
+                    }
+
+                    AppIdentityDbContextSeed.SeedAsync(
+                        identityContext, 
+                        userManager, 
+                        roleManager,
+                        adminSeedPassword)
+                        .GetAwaiter()
+                        .GetResult();
+
+                }
+
+                host.Run();
             }
             catch (Exception ex)
             {

@@ -4,12 +4,14 @@ using FootballLeague.API.Features.Commands.Match.ResponseModels;
 using FootballLeague.API.Features.Queries.Match;
 using FootballLeague.API.Features.Queries.Match.ResponseModels;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace FootballLeague.API.Controllers
 {
+    [Authorize(Roles = "ADMINISTRATOR")]
     public class MatchesController : BaseApiController
     {
         private readonly IMediator _mediator;

@@ -17,15 +17,13 @@ namespace FootballLeague.API
         }
 
         public IConfiguration Configuration { get; }
-
         public IWebHostEnvironment Env { get; }
-
 
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCoreServices();
             services.AddDataServices(Configuration, Env);
-            services.AddInfrastructureServices();
+            services.AddInfrastructureServices(Configuration, Env);
             services.AddAPIServices();
 
             services.AddControllers();
@@ -48,6 +46,7 @@ namespace FootballLeague.API
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

@@ -5,11 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.6.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Business\FootballLeague.Core\FootballLeague.Core.csproj" />
+    <ProjectReference Include="..\..\Data\FootballLeague.Data\FootballLeague.Data.csproj" />
   </ItemGroup>
 
 </Project>

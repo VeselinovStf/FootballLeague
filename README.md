@@ -14,3 +14,13 @@ Football League application for managing your virtual league
 	- After the result is added, the table with the rankings and results in the customers portal should be updated accordingly
 	- Should have following scoring: win: 3 points, draw: 1 point and loss: 0 points
 
+## Development Authentication Credentials
+
+```
+{
+  "userName": "admin@footballleague.com",
+  "password": "!1qaz2Wsx"
+}
+```
+
+## NOTE: Production Creadentials are stored in appsettings.json, DONT USE IN ACTUAL PRODUCTION ENVIRONMENT

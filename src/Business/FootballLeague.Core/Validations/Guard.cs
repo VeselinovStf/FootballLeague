@@ -12,7 +12,7 @@ namespace FootballLeague.Core.Validations
             }
         }
 
-        internal static void NotNull<T>(T obj)
+        public static void NotNull<T>(T obj)
         {
             if (obj == null)
             {
@@ -20,7 +20,7 @@ namespace FootballLeague.Core.Validations
             }
         }
 
-        internal static void StringIsNullEmptyOrWhiteSpace(string name)
+        public static void StringIsNullEmptyOrWhiteSpace(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
