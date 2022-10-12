@@ -7,7 +7,7 @@ namespace FootballLeague.Core.Specifications
         public TeamsWithStatiscticsSpecification(bool isDeleted) : base(s => s.IsDeleted == isDeleted)
         {
             AddInclude(t => t.Statistic);
-
+            ApplyOrderByDescending(t => t.Statistic.TotalScore);
         }
     }
 }
