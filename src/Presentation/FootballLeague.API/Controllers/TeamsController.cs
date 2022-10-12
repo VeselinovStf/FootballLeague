@@ -8,12 +8,12 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Data;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace FootballLeague.API.Controllers
 {
-   
+
     public class TeamsController : BaseApiController
     {
         private readonly IMediator _mediator;
@@ -57,8 +57,7 @@ namespace FootballLeague.API.Controllers
         [HttpGet("id")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetTeamQueryResponseModel))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(GetTeamQueryResponseModel))]
-
-        public async Task<IActionResult> GetTeam(int id)
+        public async Task<IActionResult> GetTeam([Required] int id)
         {
             return ApiResponseExtensions.ValidateResponseModel(await this._mediator.Send(new GetTeamQuery(id)));
         }
