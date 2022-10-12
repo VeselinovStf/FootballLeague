@@ -7,6 +7,7 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
 namespace FootballLeague.API.Controllers
@@ -43,7 +44,7 @@ namespace FootballLeague.API.Controllers
         [HttpGet("id")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(GetMatchQueryResponseModel))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(GetMatchQueryResponseModel))]
-        public async Task<IActionResult> GetMatch(int id)
+        public async Task<IActionResult> GetMatch([Required]int id)
         {
             return ApiResponseExtensions.ValidateResponseModel(await this._mediator.Send(new GetMatchQuery(id)));
         }
