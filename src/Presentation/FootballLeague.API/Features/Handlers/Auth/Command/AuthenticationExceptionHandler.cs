@@ -19,7 +19,7 @@ namespace FootballLeague.API.Features.Handlers.Auth.Command
         {
             _appLogger.LogError(exception.Message, exception);
 
-            state.SetHandled(new AuthenticationResponseModel(false, exception.Message));
+            state.SetHandled(new AuthenticationResponseModel(false, "Unable To Authenticate"));
         }
     }
 }
