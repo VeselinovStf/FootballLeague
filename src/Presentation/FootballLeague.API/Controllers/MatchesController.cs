@@ -24,7 +24,7 @@ namespace FootballLeague.API.Controllers
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CreateMatchResponseModel))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<IActionResult> CreateTeam(CreateMatchRequest request)
+        public async Task<IActionResult> CreateMatch(CreateMatchRequest request)
         {
             return ApiResponseExtensions.ValidateResponseModel(await this._mediator.Send(request));
         }
