@@ -57,8 +57,8 @@ namespace FootballLeague.Core.Services
             Guard.NotNull(currentMatch);
 
             // NOTE: Match is marked as Deleted! Removing scores from Team Statistic
-            // TODO: What is happening if Match is updated as Deleted=false in db!
-            currentMatch.UpdateMatchResult(currentMatch.HomeTeamScore, currentMatch.AwayTeamScore);
+            // TODO: What is happening if Match is from as Deleted=false in db!
+            currentMatch.DeleteMatchResult(currentMatch.HomeTeamScore, currentMatch.AwayTeamScore);
 
             await this._matchRepository.DeleteAsync(currentMatch);
         }

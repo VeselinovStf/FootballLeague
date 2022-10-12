@@ -46,11 +46,23 @@ namespace FootballLeague.Core.Entities
             Guard.ValueLessThenEqual(-1, homeTeamScore);
             Guard.ValueLessThenEqual(-1, awayTeamScore);
 
+            Events.Add(new CleanTeamStatisticsEvent(HomeTeamId, this.HomeTeamScore, this.AwayTeamScore));
+            Events.Add(new CleanTeamStatisticsEvent(AwayTeamId, this.AwayTeamScore, this.HomeTeamScore));
+
             this.HomeTeamScore = homeTeamScore;
             this.AwayTeamScore = awayTeamScore;
 
-            Events.Add(new CleanTeamStatisticsEvent(HomeTeamId, homeTeamScore, awayTeamScore));
-            Events.Add(new CleanTeamStatisticsEvent(AwayTeamId, awayTeamScore, homeTeamScore));
+            Events.Add(new UpdateTeamStatisticEvent(HomeTeamId, homeTeamScore, awayTeamScore));
+            Events.Add(new UpdateTeamStatisticEvent(AwayTeamId, awayTeamScore, homeTeamScore));
+        }
+
+        public void DeleteMatchResult(int homeTeamScore, int awayTeamScore)
+        {
+            Guard.ValueLessThenEqual(-1, homeTeamScore);
+            Guard.ValueLessThenEqual(-1, awayTeamScore);
+
+            Events.Add(new CleanTeamStatisticsEvent(HomeTeamId, this.HomeTeamScore, this.AwayTeamScore));
+            Events.Add(new CleanTeamStatisticsEvent(AwayTeamId, this.AwayTeamScore, this.HomeTeamScore));
         }
 
         public void UpdateMatchDate(DateTime newDate)
