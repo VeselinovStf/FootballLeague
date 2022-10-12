@@ -50,25 +50,6 @@ namespace FootballLeague.Core.Entities
             return homeMatch;
         }
 
-        public void RemoveMatch(int homeMatchId, int awayMatchId)
-        {
-            Guard.ValueLessThenEqual(0, homeMatchId);
-            Guard.ValueLessThenEqual(0, awayMatchId);
-
-            var homeMatch = this._homeMatches
-                .FirstOrDefault(m => m.Id == homeMatchId);
-
-            var awayMatch = this._awayMatches
-                .FirstOrDefault(m => m.Id == awayMatchId);
-
-            Guard.NotNull(homeMatch);
-            Guard.NotNull(awayMatch);
-
-
-            this._homeMatches.Remove(homeMatch);
-            this._awayMatches.Remove(homeMatch);
-        }
-
         public void UpdateStatistics(int homeTeamScore, int awayTeamScore)
         {
             if (homeTeamScore > awayTeamScore)
